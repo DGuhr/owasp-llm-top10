@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Shield, User, Mail, Trophy, Loader2 } from 'lucide-react'
 import { createBrowserClient, supabaseHelpers } from '@/lib/supabase'
+import { useOctober } from '@/contexts/OctoberContext'
 
 export default function OctoberRegisterPage() {
   const router = useRouter()
+  const { refreshUser } = useOctober()
   const [formData, setFormData] = useState({
     username: '',
     displayName: '',
@@ -53,6 +55,9 @@ export default function OctoberRegisterPage() {
       // Store user ID in localStorage
       localStorage.setItem('october_ctf_user_id', user.id)
       localStorage.setItem('october_ctf_username', formData.username)
+
+      // Update context so the /october page sees the authenticated user
+      await refreshUser()
 
       // Redirect to October challenge page
       router.push('/october')

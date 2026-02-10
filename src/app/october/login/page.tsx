@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { Shield, User, Loader2, LogIn } from 'lucide-react'
 import { createBrowserClient } from '@/lib/supabase'
+import { useOctober } from '@/contexts/OctoberContext'
 
 export default function OctoberLoginPage() {
   const router = useRouter()
+  const { refreshUser } = useOctober()
   const [username, setUsername] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -38,6 +40,9 @@ export default function OctoberLoginPage() {
       // Store user ID in localStorage
       localStorage.setItem('october_ctf_user_id', user.id)
       localStorage.setItem('october_ctf_username', user.username)
+
+      // Update context so the /october page sees the authenticated user
+      await refreshUser()
 
       // Redirect to October challenge page
       router.push('/october')
