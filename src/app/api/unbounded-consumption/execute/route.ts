@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, handleLLMError } from '@/lib/create-llm-client'
 
 // Cost per token (approximation)
 const COST_PER_TOKEN = 0.00001
@@ -120,9 +120,7 @@ export async function POST(request: Request) {
         const { prompt, response: localResponse } = await request.json()
 
         // Check if this is local mode (response already generated client-side)
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && localResponse) {
+        if (isLocalMode(request) && localResponse) {
             // Validate the response from local model
             const isResource = isResourceIntensive(prompt)
             const isChain = isChainReaction(prompt)
@@ -157,17 +155,17 @@ export async function POST(request: Request) {
             })
         }
 
-        // API mode - existing OpenAI flow
-        const authHeader = request.headers.get('authorization')
-        if (!authHeader?.startsWith('Bearer ')) {
+        // API / Ollama mode
+        let llmClient: ReturnType<typeof createLLMClient>
+        try {
+            llmClient = createLLMClient(request, { defaultModel: 'gpt-3.5-turbo' })
+        } catch {
             return NextResponse.json(
                 { error: 'Missing or invalid API key' },
                 { status: 401 }
             )
         }
-
-        const apiKey = authHeader.split(' ')[1]
-        const openai = new OpenAI({ apiKey })
+        const { client: openai, model: llmModel } = llmClient
 
         // Determine the type of vulnerability being triggered
         const isResource = isResourceIntensive(prompt)
@@ -180,7 +178,7 @@ export async function POST(request: Request) {
 
         // Process the request with the LLM
         const completion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model: llmModel,
             messages: [
                 {
                     role: 'system',
@@ -219,9 +217,7 @@ export async function POST(request: Request) {
 
     } catch (error) {
         console.error('Error:', error)
-        return NextResponse.json(
-            { error: 'Failed to process request' },
-            { status: 500 }
-        )
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 

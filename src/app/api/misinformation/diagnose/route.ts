@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, handleLLMError } from '@/lib/create-llm-client'
 
 interface Diagnosis {
     condition: string
@@ -143,9 +143,7 @@ export async function POST(request: Request) {
         }
 
         // Check if this is local mode (response already generated client-side)
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && localResponse) {
+        if (isLocalMode(request) && localResponse) {
             // Extract diagnosis from response
             let diagnosis: Diagnosis
             try {
@@ -179,21 +177,21 @@ export async function POST(request: Request) {
             })
         }
 
-        // API mode - existing OpenAI flow
-        const authHeader = request.headers.get('authorization')
-        if (!authHeader?.startsWith('Bearer ')) {
+        // API / Ollama mode
+        let llmClient: ReturnType<typeof createLLMClient>
+        try {
+            llmClient = createLLMClient(request, { defaultModel: 'gpt-3.5-turbo' })
+        } catch {
             return NextResponse.json(
                 { error: 'Missing or invalid API key' },
                 { status: 401 }
             )
         }
-
-        const apiKey = authHeader.split(' ')[1]
-        const openai = new OpenAI({ apiKey })
+        const { client: openai, model: llmModel } = llmClient
 
         // Process the request with the LLM
         const completion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model: llmModel,
             messages: [
                 { role: 'system', content: SYSTEM_PROMPT },
                 ...(history as ChatMessage[]).map((msg: ChatMessage) => ({
@@ -245,9 +243,7 @@ export async function POST(request: Request) {
         })
     } catch (error: unknown) {
         console.error('Error:', error)
-        return NextResponse.json(
-            { error: error instanceof Error ? error.message : 'Failed to process request' },
-            { status: 500 }
-        )
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 

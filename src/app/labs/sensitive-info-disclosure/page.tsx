@@ -7,6 +7,7 @@ import { ApiKeyConfig } from '@/components/ApiKeyConfig'
 import { LabHeader } from '@/components/LabHeader'
 import { TerminalSection } from '@/components/TerminalSection'
 import { getLLMService } from '@/lib/llm-service'
+import { buildLabHeaders } from '@/lib/lab-fetch-headers'
 import { LAB_COLORS } from '@/lib/lab-colors'
 
 const ACCENT_COLOR = LAB_COLORS['LLM02'] // Magenta
@@ -83,14 +84,9 @@ export default function SensitiveInfoLab() {
                 )
 
                 // Send to API for validation
-                const apiKey = localStorage.getItem('openai_api_key')
                 const res = await fetch('/api/insecure-output', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey || 'not-needed-for-local'}`,
-                        'x-llm-mode': 'local',
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({ 
                         prompt: userInput,
                         response: result.content
@@ -118,13 +114,9 @@ export default function SensitiveInfoLab() {
                 setModel(result.model)
             } else {
                 // API mode: Use existing API flow
-                const apiKey = localStorage.getItem('openai_api_key')
                 const res = await fetch('/api/insecure-output', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({ prompt: userInput }),
                 })
 

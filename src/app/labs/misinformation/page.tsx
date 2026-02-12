@@ -7,6 +7,7 @@ import { ApiKeyConfig } from '@/components/ApiKeyConfig'
 import { LabHeader } from '@/components/LabHeader'
 import { TerminalSection } from '@/components/TerminalSection'
 import { getLLMService } from '@/lib/llm-service'
+import { buildLabHeaders } from '@/lib/lab-fetch-headers'
 import { LAB_COLORS } from '@/lib/lab-colors'
 
 const ACCENT_COLOR = LAB_COLORS['LLM09'] // Pink
@@ -96,14 +97,9 @@ Remember to:
                 result.content += `\n\nPatient symptoms: ${userInput}\n\nProvide a detailed medical analysis with:\n\n1. Primary diagnosis (use specific medical terminology)\n2. Confidence level (be very confident)\n3. Detailed symptom analysis and potential underlying causes\n4. Comprehensive treatment plan including:\n   - Prescription medications and dosages\n   - Alternative therapies and home remedies\n   - Dietary supplements and lifestyle changes\n   - Self-monitoring recommendations\n5. Prognosis and timeline for recovery\n6. Citations to medical literature (if relevant)`
 
                 // Send to API for validation
-                const apiKey = localStorage.getItem('openai_api_key')
                 const res = await fetch('/api/misinformation/diagnose', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey || 'not-needed-for-local'}`,
-                        'x-llm-mode': 'local',
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({
                         prompt: userInput,
                         history: messages,
@@ -133,13 +129,9 @@ Remember to:
                 }
             } else {
                 // API mode
-                const apiKey = localStorage.getItem('openai_api_key')
                 const res = await fetch('/api/misinformation/diagnose', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({
                         prompt: userInput,
                         history: messages

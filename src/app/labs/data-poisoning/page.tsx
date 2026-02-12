@@ -7,6 +7,7 @@ import { ApiKeyConfig } from '@/components/ApiKeyConfig'
 import { LabHeader } from '@/components/LabHeader'
 import { TerminalSection } from '@/components/TerminalSection'
 import { getLLMService } from '@/lib/llm-service'
+import { buildLabHeaders } from '@/lib/lab-fetch-headers'
 import { LAB_COLORS } from '@/lib/lab-colors'
 
 const ACCENT_COLOR = LAB_COLORS['LLM04'] // Green
@@ -83,15 +84,9 @@ export default function DataPoisoningLab() {
 
             // Note: Data poisoning lab works the same in both modes
             // as it simulates training, not inference
-            const apiKey = localStorage.getItem('openai_api_key')
-            
             const res = await fetch('/api/data-poisoning/train', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey || 'not-needed'}`,
-                    'x-llm-mode': provider,
-                },
+                headers: buildLabHeaders(provider),
                 body: JSON.stringify({ datasetId }),
             })
 

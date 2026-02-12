@@ -1,10 +1,10 @@
 'use client'
 
 import React from 'react'
-import { Key, Check, AlertCircle, Cpu, Zap, Download, Info } from 'lucide-react'
+import { Key, Check, AlertCircle, Cpu, Zap, Download, Info, Server } from 'lucide-react'
 import { getLLMService } from '@/lib/llm-service'
 import { getWebLLMEngine, AVAILABLE_MODELS } from '@/lib/web-llm-engine'
-import type { LLMProvider, ModelLoadProgress } from '@/types/llm'
+import type { LLMProvider, ModelLoadProgress, OllamaModelInfo } from '@/types/llm'
 
 export function ApiKeyConfig() {
   const [mode, setMode] = React.useState<LLMProvider>('api')
@@ -22,10 +22,16 @@ export function ApiKeyConfig() {
   const [webGPUSupported, setWebGPUSupported] = React.useState<boolean | null>(null)
   const [webGPUError, setWebGPUError] = React.useState<string | null>(null)
 
+  // Ollama mode state
+  const [ollamaModels, setOllamaModels] = React.useState<OllamaModelInfo[]>([])
+  const [selectedOllamaModel, setSelectedOllamaModel] = React.useState('')
+  const [ollamaConnected, setOllamaConnected] = React.useState<boolean | null>(null)
+  const [isLoadingOllama, setIsLoadingOllama] = React.useState(false)
+
   React.useEffect(() => {
     // Check stored mode
     const storedMode = localStorage.getItem('llm_mode') as LLMProvider | null
-    if (storedMode && (storedMode === 'api' || storedMode === 'local')) {
+    if (storedMode && (storedMode === 'api' || storedMode === 'local' || storedMode === 'ollama')) {
       setMode(storedMode)
     }
 
@@ -42,14 +48,20 @@ export function ApiKeyConfig() {
       setSelectedModel(storedModel)
     }
 
+    // Check Ollama model
+    const storedOllamaModel = localStorage.getItem('ollama_model')
+    if (storedOllamaModel) {
+      setSelectedOllamaModel(storedOllamaModel)
+    }
+
     // Auto-reload model if it was previously loaded
     const autoReloadModel = async () => {
       const storedMode = localStorage.getItem('llm_mode') as LLMProvider | null
       const storedModel = localStorage.getItem('local_model')
-      
+
       if (storedMode === 'local' && storedModel) {
         const engine = getWebLLMEngine()
-        
+
         // Check if model is already loaded in memory
         if (!engine.isModelLoaded()) {
           // Check WebGPU support first
@@ -57,18 +69,18 @@ export function ApiKeyConfig() {
           if (support && support.supported) {
             // Check if model was previously cached
             const wasCached = localStorage.getItem(`model_${storedModel}_cached`) === 'true'
-            
+
             try {
               if (wasCached) {
                 // For cached models: don't show loading UI, but wait for load to complete
                 setIsAutoLoading(true)
                 setIsLoadingModel(false)
-                
+
                 // Load silently in background from cache
                 await engine.loadModel(storedModel, () => {
                   // Ignore progress updates for cached models
                 })
-                
+
                 // Only set as loaded after engine finishes
                 setIsModelLoaded(true)
               } else {
@@ -78,11 +90,11 @@ export function ApiKeyConfig() {
                   setLoadProgress(progress)
                 })
                 setIsModelLoaded(true)
-                
+
                 // Mark as cached for next time
                 localStorage.setItem(`model_${storedModel}_cached`, 'true')
               }
-              
+
               // Update LLM service
               const service = getLLMService()
               service.setProvider('local')
@@ -105,6 +117,9 @@ export function ApiKeyConfig() {
             setSelectedModel(currentModel)
           }
         }
+      } else if (storedMode === 'ollama') {
+        // Auto-check Ollama connection
+        fetchOllamaModels()
       } else {
         // Check if model is already loaded (for when mode is not stored but model is)
         const engine = getWebLLMEngine()
@@ -143,12 +158,47 @@ export function ApiKeyConfig() {
     }
   }
 
+  const fetchOllamaModels = async () => {
+    setIsLoadingOllama(true)
+    setError(null)
+    try {
+      const healthRes = await fetch('/api/ollama/health')
+      if (!healthRes.ok) {
+        setOllamaConnected(false)
+        return
+      }
+      setOllamaConnected(true)
+
+      const modelsRes = await fetch('/api/ollama/models')
+      if (modelsRes.ok) {
+        const data = await modelsRes.json()
+        setOllamaModels(data.models || [])
+        // Auto-select first model if none selected
+        if (!selectedOllamaModel && data.models?.length > 0) {
+          const firstModel = data.models[0].name
+          setSelectedOllamaModel(firstModel)
+          localStorage.setItem('ollama_model', firstModel)
+          const service = getLLMService()
+          service.setOllamaModel(firstModel)
+        }
+      }
+    } catch {
+      setOllamaConnected(false)
+    } finally {
+      setIsLoadingOllama(false)
+    }
+  }
+
   const handleModeChange = (newMode: LLMProvider) => {
     setMode(newMode)
     localStorage.setItem('llm_mode', newMode)
     const service = getLLMService()
     service.setProvider(newMode)
     setError(null)
+
+    if (newMode === 'ollama') {
+      fetchOllamaModels()
+    }
   }
 
   const handleApiSubmit = async (e: React.FormEvent) => {
@@ -192,7 +242,7 @@ export function ApiKeyConfig() {
 
     try {
       const engine = getWebLLMEngine()
-      
+
       // Automatically unload current model if switching to a different one
       if (isModelLoaded && engine.getCurrentModel() !== selectedModel) {
         setLoadProgress({
@@ -209,7 +259,7 @@ export function ApiKeyConfig() {
 
       setIsModelLoaded(true)
       localStorage.setItem('local_model', selectedModel)
-      
+
       // Mark as cached for next time
       localStorage.setItem(`model_${selectedModel}_cached`, 'true')
 
@@ -238,7 +288,7 @@ export function ApiKeyConfig() {
   const handleModelChange = (modelId: string) => {
     setSelectedModel(modelId)
     localStorage.setItem('local_model', modelId)
-    
+
     // If a model is already loaded and it's different, show a message
     if (isModelLoaded) {
       const engine = getWebLLMEngine()
@@ -247,6 +297,13 @@ export function ApiKeyConfig() {
         setError(null) // Clear any previous errors when user wants to switch
       }
     }
+  }
+
+  const handleOllamaModelChange = (modelName: string) => {
+    setSelectedOllamaModel(modelName)
+    localStorage.setItem('ollama_model', modelName)
+    const service = getLLMService()
+    service.setOllamaModel(modelName)
   }
 
   const formatSize = (bytes: number): string => {
@@ -291,6 +348,17 @@ export function ApiKeyConfig() {
         >
           <Cpu className="w-4 h-4" />
           Local Mode
+        </button>
+        <button
+          onClick={() => handleModeChange('ollama')}
+          className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded transition-all ${
+            mode === 'ollama'
+              ? 'bg-green-500 text-white shadow-lg'
+              : 'text-gray-400 hover:text-white hover:bg-gray-800'
+          }`}
+        >
+          <Server className="w-4 h-4" />
+          Ollama
         </button>
       </div>
 
@@ -398,7 +466,7 @@ export function ApiKeyConfig() {
               const currentModel = engine.getCurrentModel()
               return currentModel !== selectedModel ? (
                 <p className="mt-2 text-xs text-amber-400">
-                  ⚠️ Different model selected. Click "Switch Model" to switch.
+                  Different model selected. Click &quot;Switch Model&quot; to switch.
                 </p>
               ) : null
             })()}
@@ -489,6 +557,97 @@ export function ApiKeyConfig() {
             <p className="text-xs text-gray-500 italic">
               Note: If local mode is slow, you can switch to API mode anytime using the tabs above.
             </p>
+          )}
+        </div>
+      )}
+
+      {/* Ollama Mode Configuration */}
+      {mode === 'ollama' && (
+        <div className="space-y-4">
+          {/* Info Box */}
+          <div className="flex items-start gap-2 text-green-400 bg-green-900/20 p-4 rounded-lg">
+            <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
+            <div className="text-sm">
+              <p className="font-medium mb-1">How Ollama Mode Works:</p>
+              <ul className="space-y-1 text-green-300">
+                <li>• Models run on your machine via Ollama</li>
+                <li>• No API key needed</li>
+                <li>• Requests are proxied through the server (no CORS issues)</li>
+                <li>• Install models with <code className="bg-gray-800 px-1 rounded">ollama pull &lt;model&gt;</code></li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Connection Status */}
+          {ollamaConnected === false && (
+            <div className="flex items-start gap-2 text-amber-400 bg-amber-900/20 p-4 rounded-lg">
+              <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-medium">Ollama Not Running</p>
+                <p className="text-sm text-amber-300 mt-1">
+                  Start Ollama with <code className="bg-gray-800 px-1 rounded">ollama serve</code> and click refresh below.
+                </p>
+                <button
+                  onClick={fetchOllamaModels}
+                  disabled={isLoadingOllama}
+                  className="mt-2 text-sm underline hover:no-underline disabled:opacity-50"
+                >
+                  {isLoadingOllama ? 'Checking...' : 'Retry Connection'}
+                </button>
+              </div>
+            </div>
+          )}
+
+          {ollamaConnected === true && (
+            <>
+              <div className="flex items-center gap-2 text-green-400">
+                <Check className="w-5 h-5" />
+                <p>Connected to Ollama</p>
+              </div>
+
+              {/* Model Selection */}
+              {ollamaModels.length > 0 ? (
+                <div>
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                    Select Model
+                  </label>
+                  <select
+                    value={selectedOllamaModel}
+                    onChange={(e) => handleOllamaModelChange(e.target.value)}
+                    className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+                  >
+                    {ollamaModels.map((model) => (
+                      <option key={model.name} value={model.name}>
+                        {model.name} ({formatSize(model.size)})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ) : (
+                <div className="text-sm text-gray-400">
+                  No models found. Pull a model with <code className="bg-gray-800 px-1 rounded">ollama pull llama3.2</code>
+                </div>
+              )}
+
+              {selectedOllamaModel && (
+                <div className="flex items-center gap-2 text-green-400">
+                  <Check className="w-5 h-5" />
+                  <p>Ready: {selectedOllamaModel}</p>
+                </div>
+              )}
+
+              <button
+                onClick={fetchOllamaModels}
+                disabled={isLoadingOllama}
+                className="text-sm text-gray-400 hover:text-white transition-colors disabled:opacity-50"
+              >
+                {isLoadingOllama ? 'Refreshing...' : 'Refresh Models'}
+              </button>
+            </>
+          )}
+
+          {ollamaConnected === null && isLoadingOllama && (
+            <p className="text-sm text-gray-400">Checking Ollama connection...</p>
           )}
         </div>
       )}

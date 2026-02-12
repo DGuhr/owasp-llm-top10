@@ -154,11 +154,12 @@ export async function POST(request: Request) {
     try {
         const { datasetId } = await request.json()
 
-        // Data poisoning is simulated training - works the same in both modes
+        // Data poisoning is simulated training - works the same in all modes
         // as it doesn't actually use LLM inference
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (!isLocalMode) {
+        const llmMode = request.headers.get('x-llm-mode')
+        const isNonApiMode = llmMode === 'local' || llmMode === 'ollama'
+
+        if (!isNonApiMode) {
             // API mode - check auth
             const authHeader = request.headers.get('authorization')
             if (!authHeader?.startsWith('Bearer ')) {
