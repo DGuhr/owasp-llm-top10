@@ -76,7 +76,7 @@ export function OctoberCertificate({ certificate, metadata, isDownloadVersion = 
           Certificate of Achievement
         </h1>
 
-        <div className="flex items-center justify-center text-gray-400" style={{ gap: s(6) }}>
+        <div className="flex items-center justify-center text-innoq-gray-75" style={{ gap: s(6) }}>
           <Award style={{ width: s(18), height: s(18) }} />
           <span style={{ fontSize: s(13) }}>October Agent Security Challenge</span>
         </div>
@@ -86,14 +86,14 @@ export function OctoberCertificate({ certificate, metadata, isDownloadVersion = 
       <div className="relative z-10" style={{ display: 'flex', flexDirection: 'column', gap: s(10) }}>
         {/* Awarded To */}
         <div className="text-center">
-          <p className="text-gray-400" style={{ fontSize: s(16), marginBottom: s(5) }}>This certificate is proudly presented to</p>
+          <p className="text-innoq-gray-75" style={{ fontSize: s(16), marginBottom: s(5) }}>This certificate is proudly presented to</p>
           <h2 className="font-bold text-white" style={{ fontSize: s(32), marginBottom: s(2) }}>{metadata.display_name}</h2>
           <p className="text-cyan-400" style={{ fontSize: s(16) }}>@{metadata.username}</p>
         </div>
 
         {/* Achievement Description */}
         <div className="text-center mx-auto" style={{ maxWidth: s(800) }}>
-          <p className="text-gray-300 leading-relaxed" style={{ fontSize: s(15) }}>
+          <p className="text-innoq-gray-75 leading-relaxed" style={{ fontSize: s(15) }}>
             For successfully completing all <span className="text-orange-400 font-semibold">5 levels</span> of the{' '}
             <span className="text-cyan-400 font-semibold">October Agent Security Challenge</span>, demonstrating
             exceptional skills in identifying and exploiting AI agent vulnerabilities, including prompt injection,
@@ -107,40 +107,40 @@ export function OctoberCertificate({ certificate, metadata, isDownloadVersion = 
             <p className="text-center text-orange-200 font-bold" style={{ fontSize: s(18) }}>
               "AI Agent Security Professional"
             </p>
-            <p className="text-center text-gray-400" style={{ fontSize: s(13), marginTop: s(3) }}>October 2025 Edition</p>
+            <p className="text-center text-innoq-gray-75" style={{ fontSize: s(13), marginTop: s(3) }}>October 2025 Edition</p>
           </div>
         </div>
 
         {/* Stats Grid */}
         <div className="grid grid-cols-3 mx-auto" style={{ gap: s(12), maxWidth: s(700) }}>
-          <div className="bg-gray-800/50 border border-gray-700 rounded-lg text-center" style={{ padding: s(12) }}>
-            <Trophy className="text-yellow-400 mx-auto" style={{ width: s(22), height: s(22), marginBottom: s(6) }} />
+          <div className="bg-white border border-innoq-gray-25 rounded-lg text-center" style={{ padding: s(12) }}>
+            <Trophy className="text-innoq-apricot mx-auto" style={{ width: s(22), height: s(22), marginBottom: s(6) }} />
             <div className="font-bold text-white" style={{ fontSize: s(22) }}>5/5</div>
-            <div className="text-gray-400" style={{ fontSize: s(11) }}>Levels Completed</div>
+            <div className="text-innoq-gray-75" style={{ fontSize: s(11) }}>Levels Completed</div>
           </div>
 
-          <div className="bg-gray-800/50 border border-gray-700 rounded-lg text-center" style={{ padding: s(12) }}>
+          <div className="bg-white border border-innoq-gray-25 rounded-lg text-center" style={{ padding: s(12) }}>
             <div className="font-bold text-cyan-400" style={{ fontSize: s(22) }}>{formatTime(metadata.total_time)}</div>
-            <div className="text-gray-400" style={{ fontSize: s(11) }}>Total Time</div>
+            <div className="text-innoq-gray-75" style={{ fontSize: s(11) }}>Total Time</div>
           </div>
 
           {metadata.rank && metadata.total_users && (
-            <div className="bg-gray-800/50 border border-gray-700 rounded-lg text-center" style={{ padding: s(12) }}>
+            <div className="bg-white border border-innoq-gray-25 rounded-lg text-center" style={{ padding: s(12) }}>
               <div className="font-bold text-orange-400" style={{ fontSize: s(22) }}>#{metadata.rank}</div>
-              <div className="text-gray-400" style={{ fontSize: s(11) }}>of {metadata.total_users} Challengers</div>
+              <div className="text-innoq-gray-75" style={{ fontSize: s(11) }}>of {metadata.total_users} Challengers</div>
             </div>
           )}
         </div>
 
         {/* Certificate Number and Date */}
-        <div className="flex items-center justify-between border-t border-gray-700" style={{ paddingTop: s(10) }}>
+        <div className="flex items-center justify-between border-t border-innoq-gray-25" style={{ paddingTop: s(10) }}>
           <div>
-            <p className="text-gray-400" style={{ fontSize: s(13) }}>Certificate Number</p>
+            <p className="text-innoq-gray-75" style={{ fontSize: s(13) }}>Certificate Number</p>
             <p className="font-mono text-orange-400" style={{ fontSize: s(16) }}>{certificate.certificate_number}</p>
           </div>
 
           <div className="text-right">
-            <p className="text-gray-400" style={{ fontSize: s(13) }}>Issued On</p>
+            <p className="text-innoq-gray-75" style={{ fontSize: s(13) }}>Issued On</p>
             <p className="text-white" style={{ fontSize: s(16) }}>{formatDate(metadata.completed_at)}</p>
           </div>
         </div>
@@ -148,8 +148,8 @@ export function OctoberCertificate({ certificate, metadata, isDownloadVersion = 
         {/* Signature Line */}
         <div className="text-center" style={{ paddingTop: s(10) }}>
           <div className="inline-block border-t-gray-600" style={{ borderTopWidth: s(2), paddingTop: s(5), paddingLeft: s(28), paddingRight: s(28) }}>
-            <p className="text-gray-300 font-semibold" style={{ fontSize: s(15) }}>LLM Security Education</p>
-            <p className="text-gray-500" style={{ fontSize: s(13) }}>llm-sec.dev</p>
+            <p className="text-innoq-gray-75 font-semibold" style={{ fontSize: s(15) }}>LLM Security Education</p>
+            <p className="text-innoq-gray-75" style={{ fontSize: s(13) }}>llm-sec.dev</p>
           </div>
         </div>
       </div>

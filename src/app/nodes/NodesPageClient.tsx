@@ -34,23 +34,23 @@ export function NodesPageClient({ nodesInfo }: NodesPageClientProps) {
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-7xl mx-auto space-y-8">
                     {/* Header */}
-                    <div className="border-l-4 pl-6 py-2 bg-[#1a1f2e]/50 animate-fade-in" style={{ borderColor: ACCENT_COLOR }}>
+                    <div className="border-l-4 pl-6 py-2 bg-[#f7f7f7] animate-fade-in" style={{ borderColor: ACCENT_COLOR }}>
                         <div className="flex items-center gap-3 mb-3">
                             <Network className="w-8 h-8 animate-pulse-glow" style={{ color: ACCENT_COLOR }} />
-                            <h1 className="text-3xl font-display text-[#e8e9ed]">
+                            <h1 className="text-3xl font-display text-innoq-gray">
                                 <span className="font-mono" style={{ color: ACCENT_COLOR }}>[SYS]</span> LLM System Components
                             </h1>
                         </div>
-                        <div className="font-mono text-xs text-[#8892a6] flex items-center gap-2">
+                        <div className="font-mono text-xs text-innoq-gray-75 flex items-center gap-2">
                             <div className="w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: ACCENT_COLOR }}></div>
                             <span>COMPONENT_MAP ACTIVE</span>
                         </div>
                     </div>
 
-                    <p className="text-lg text-[#8892a6] max-w-3xl leading-relaxed">
+                    <p className="text-lg text-innoq-gray-75 max-w-3xl leading-relaxed">
                         Explore the different components of an LLM system and their associated security vulnerabilities.
                         Each component represents a potential attack surface that must be secured in production deployments.
                     </p>
@@ -69,7 +69,7 @@ export function NodesPageClient({ nodesInfo }: NodesPageClientProps) {
                                         aria-describedby={`component-${node.id}-desc`}
                                     >
                                         <article
-                                            className="bg-[#1a1f2e] border-2 rounded-lg p-6 transition-all hover:scale-[1.02] overflow-hidden h-full flex flex-col"
+                                            className="bg-[#f7f7f7] border-2 rounded-lg p-6 transition-all hover:scale-[1.02] overflow-hidden h-full flex flex-col"
                                             style={{ 
                                                 borderColor: `${node.color}33`,
                                                 boxShadow: `0 0 20px ${node.color}1a`
@@ -77,27 +77,27 @@ export function NodesPageClient({ nodesInfo }: NodesPageClientProps) {
                                         >
                                             <div className="flex items-center gap-4 mb-4">
                                                 <div
-                                                    className="p-3 bg-[#0a0e14] rounded-full border-2 group-hover:scale-110 transition-transform group-hover:animate-pulse-glow"
+                                                    className="p-3 bg-white rounded-full border-2 group-hover:scale-110 transition-transform group-hover:animate-pulse-glow"
                                                     style={{ borderColor: node.color }}
                                                     aria-hidden="true"
                                                 >
                                                     {Icon && <Icon className="w-6 h-6" style={{ color: node.color }} />}
                                                 </div>
-                                                <h3 className="text-xl font-semibold font-mono text-[#e8e9ed]">
-                                                    <span className="text-[#8892a6]">[</span>
+                                                <h3 className="text-xl font-semibold font-mono text-innoq-gray">
+                                                    <span className="text-innoq-gray-75">[</span>
                                                     <span style={{ color: node.color }}>{node.label}</span>
-                                                    <span className="text-[#8892a6]">]</span>
+                                                    <span className="text-innoq-gray-75">]</span>
                                                 </h3>
                                             </div>
                                             <p
-                                                className="text-[#8892a6] text-sm flex-grow leading-relaxed"
+                                                className="text-innoq-gray-75 text-sm flex-grow leading-relaxed"
                                                 id={`component-${node.id}-desc`}
                                             >
                                                 {node.description}
                                             </p>
                                             <div className="mt-4 pt-4 border-t flex justify-end" style={{ borderColor: `${node.color}33` }}>
                                                 <span className="text-sm font-mono group-hover:translate-x-1 transition-transform inline-block" style={{ color: node.color }}>
-                                                    VIEW_VULNERABILITIES <span className="text-[#8892a6]">&gt;&gt;</span>
+                                                    VIEW_VULNERABILITIES <span className="text-innoq-gray-75">&gt;&gt;</span>
                                                 </span>
                                             </div>
                                         </article>

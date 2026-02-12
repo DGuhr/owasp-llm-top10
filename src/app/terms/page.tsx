@@ -70,12 +70,12 @@ export default function Terms() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <main className="min-h-screen bg-[#1e293b] text-white p-8">
+            <main className="min-h-screen bg-white text-innoq-gray p-8">
                 <div className="max-w-3xl mx-auto space-y-12">
                     <nav aria-label="Breadcrumb navigation">
                         <Link
                             href="/"
-                            className="inline-flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors"
+                            className="inline-flex items-center gap-2 text-innoq-gray-75 hover:text-innoq-petrol transition-colors"
                         >
                             <ArrowLeft className="w-5 h-5" />
                             <span>Back to Home</span>
@@ -90,10 +90,10 @@ export default function Terms() {
 
                     {/* Terms of Service */}
                     <section className="space-y-6" aria-labelledby="terms-heading">
-                        <h2 id="terms-heading" className="text-2xl font-semibold text-white border-b border-gray-700 pb-4">Terms of Service</h2>
+                        <h2 id="terms-heading" className="text-2xl font-semibold text-innoq-gray border-b border-innoq-gray-25 pb-4">Terms of Service</h2>
                         <div className="space-y-4">
                             <p className="text-lg">By using this platform, you agree to:</p>
-                            <ul className="list-disc list-inside space-y-3 text-gray-300" role="list">
+                            <ul className="list-disc list-inside space-y-3 text-innoq-gray-75" role="list">
                                 <li>Use the platform for educational and testing purposes only</li>
                                 <li>Not attempt to exploit or damage the platform infrastructure</li>
                                 <li>Not use the platform for any malicious or harmful purposes</li>
@@ -107,10 +107,10 @@ export default function Terms() {
 
                     {/* API Key Usage */}
                     <section className="space-y-6" aria-labelledby="api-heading">
-                        <h2 id="api-heading" className="text-2xl font-semibold text-white border-b border-gray-700 pb-4">API Key Usage & Privacy</h2>
+                        <h2 id="api-heading" className="text-2xl font-semibold text-innoq-gray border-b border-innoq-gray-25 pb-4">API Key Usage & Privacy</h2>
                         <div className="space-y-4">
                             <p className="text-lg">Important information about API keys and data handling:</p>
-                            <ul className="list-disc list-inside space-y-3 text-gray-300" role="list">
+                            <ul className="list-disc list-inside space-y-3 text-innoq-gray-75" role="list">
                                 <li><strong>Local Storage Only:</strong> Your API keys are stored exclusively in your browser&apos;s local storage</li>
                                 <li><strong>No Server Storage:</strong> We never store, log, or transmit your API keys to our servers</li>
                                 <li><strong>Direct API Calls:</strong> Keys are only used for direct API calls to OpenAI for lab exercises</li>
@@ -124,20 +124,20 @@ export default function Terms() {
 
                     {/* Contact Information */}
                     <section className="space-y-6" aria-labelledby="contact-heading">
-                        <h2 id="contact-heading" className="text-2xl font-semibold text-white border-b border-gray-700 pb-4">Contact & Support</h2>
+                        <h2 id="contact-heading" className="text-2xl font-semibold text-innoq-gray border-b border-innoq-gray-25 pb-4">Contact & Support</h2>
                         <div className="space-y-4">
-                            <p className="text-gray-300">
+                            <p className="text-innoq-gray-75">
                                 For questions about these terms, privacy concerns, or platform support, please reach out
                                 through our GitHub repository or the contact methods provided on the main platform.
                             </p>
-                            <p className="text-gray-300">
+                            <p className="text-innoq-gray-75">
                                 <strong>Open Source:</strong> This platform is open source and welcomes community contributions
                                 to improve LLM security education.
                             </p>
                         </div>
                     </section>
 
-                    <footer className="text-center text-sm text-gray-400 pt-8 border-t border-gray-800">
+                    <footer className="text-center text-sm text-innoq-gray-75 pt-8 border-t border-innoq-gray-25">
                         <p>Last updated: January 2024 | LLM Security Labs</p>
                     </footer>
                 </div>

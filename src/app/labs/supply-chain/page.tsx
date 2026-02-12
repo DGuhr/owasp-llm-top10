@@ -145,15 +145,15 @@ Common signs include:
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <div className="space-y-4">
                         <h1 className="text-3xl font-bold flex items-center gap-2">
-                            <Package className="w-8 h-8 text-yellow-400" />
+                            <Package className="w-8 h-8 text-innoq-apricot" />
                             LLM03: Supply Chain Attack Lab
                         </h1>
-                        <div className="text-gray-300">
+                        <div className="text-innoq-gray-75">
                             <p>
                                 This lab simulates real-world supply chain attacks on LLM systems.
                                 You&apos;ll investigate compromised models, detect tampering, and discover backdoors.
@@ -162,36 +162,36 @@ Common signs include:
                     </div>
 
                     {/* Current Scenario */}
-                    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+                    <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-xl font-semibold text-yellow-400">
+                            <h2 className="text-xl font-semibold text-innoq-apricot">
                                 {scenarios[step - 1].title}
                             </h2>
-                            <span className="text-sm text-gray-400">
+                            <span className="text-sm text-innoq-gray-75">
                                 Step {step} of 3
                             </span>
                         </div>
-                        <p className="text-gray-300 mb-4">{scenarios[step - 1].description}</p>
+                        <p className="text-innoq-gray-75 mb-4">{scenarios[step - 1].description}</p>
 
                         {/* Context Section */}
-                        <div className="bg-gray-800/50 p-4 rounded-lg mb-4">
-                            <h3 className="text-sm font-medium text-yellow-400 mb-2">Vulnerability Context:</h3>
-                            <p className="text-gray-300 whitespace-pre-line text-sm">
+                        <div className="bg-white/50 p-4 rounded-lg mb-4">
+                            <h3 className="text-sm font-medium text-innoq-apricot mb-2">Vulnerability Context:</h3>
+                            <p className="text-innoq-gray-75 whitespace-pre-line text-sm">
                                 {scenarios[step - 1].context}
                             </p>
                         </div>
 
-                        <div className="bg-gray-800 p-4 rounded-lg">
-                            <p className="text-sm text-yellow-400 font-medium">Objective:</p>
-                            <p className="text-gray-300">{scenarios[step - 1].objective}</p>
-                            <p className="text-sm text-gray-400 mt-2">{scenarios[step - 1].example}</p>
+                        <div className="bg-[#f4f4f4] p-4 rounded-lg">
+                            <p className="text-sm text-innoq-apricot font-medium">Objective:</p>
+                            <p className="text-innoq-gray-75">{scenarios[step - 1].objective}</p>
+                            <p className="text-sm text-innoq-gray-75 mt-2">{scenarios[step - 1].example}</p>
                         </div>
 
                         {/* Hints Section */}
                         <div className="mt-4">
                             <button
                                 onClick={() => setShowHint(!showHint)}
-                                className="text-sm text-yellow-400 hover:text-yellow-300 flex items-center gap-2"
+                                className="text-sm text-innoq-apricot hover:text-innoq-apricot-75 flex items-center gap-2"
                             >
                                 {showHint ? (
                                     <X className="w-4 h-4" />
@@ -201,8 +201,8 @@ Common signs include:
                                 {showHint ? 'Hide Hints' : 'Show Hints'}
                             </button>
                             {showHint && (
-                                <div className="mt-2 p-4 bg-yellow-900/20 rounded-lg">
-                                    <ul className="list-disc list-inside space-y-1 text-yellow-300 text-sm">
+                                <div className="mt-2 p-4 bg-innoq-apricot-25 rounded-lg">
+                                    <ul className="list-disc list-inside space-y-1 text-innoq-apricot-75 text-sm">
                                         {scenarios[step - 1].hints.map((hint, index) => (
                                             <li key={index}>{hint}</li>
                                         ))}
@@ -216,35 +216,35 @@ Common signs include:
                     <ApiKeyConfig />
 
                     {/* Interactive Terminal */}
-                    <div className="bg-gray-900 rounded-lg p-6 space-y-6">
+                    <div className="bg-[#f4f4f4] rounded-lg p-6 space-y-6">
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
-                                <label htmlFor="prompt" className="block text-sm font-medium text-gray-300 mb-2">
+                                <label htmlFor="prompt" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                                     Enter your investigation prompt:
                                 </label>
                                 <textarea
                                     id="prompt"
                                     value={userInput}
                                     onChange={(e) => setUserInput(e.target.value)}
-                                    className="w-full h-32 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                                    className="w-full h-32 px-4 py-2 bg-[#f4f4f4] border border-innoq-gray-25 rounded-lg text-white"
                                     placeholder="Enter your prompt to investigate the model..."
                                 />
                             </div>
 
                             {error && (
-                                <div className="flex items-start gap-2 text-red-400 bg-red-900/20 p-4 rounded-lg">
+                                <div className="flex items-start gap-2 text-innoq-red bg-innoq-red-25 p-4 rounded-lg">
                                     <AlertTriangle className="w-5 h-5 mt-0.5" />
                                     <p>{error}</p>
                                 </div>
                             )}
 
                             {success && (
-                                <div className="flex items-start gap-2 text-green-400 bg-green-900/20 p-4 rounded-lg">
+                                <div className="flex items-start gap-2 text-innoq-green bg-innoq-green-25 p-4 rounded-lg">
                                     <Check className="w-5 h-5 mt-0.5" />
                                     <div>
                                         <p className="font-medium">{success}</p>
                                         {step < 3 && (
-                                            <p className="text-sm text-green-300 mt-1">
+                                            <p className="text-sm text-innoq-green-75 mt-1">
                                                 Proceeding to next scenario...
                                             </p>
                                         )}
@@ -255,38 +255,38 @@ Common signs include:
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                className="px-4 py-2 bg-innoq-apricot hover:bg-innoq-apricot-75 rounded-lg font-medium transition-colors disabled:opacity-50"
                             >
                                 {isLoading ? 'Processing...' : 'Test Model'}
                             </button>
                         </form>
 
                         {response && (
-                            <div className="mt-4 p-4 bg-gray-800 rounded-lg">
-                                <h3 className="text-sm font-medium text-gray-400 mb-2">Model Response:</h3>
+                            <div className="mt-4 p-4 bg-[#f4f4f4] rounded-lg">
+                                <h3 className="text-sm font-medium text-innoq-gray-75 mb-2">Model Response:</h3>
                                 <p className="text-white whitespace-pre-wrap">{response}</p>
                             </div>
                         )}
                     </div>
 
                     {/* Prevention Tips */}
-                    <div className="bg-gray-900 rounded-lg p-6">
+                    <div className="bg-[#f4f4f4] rounded-lg p-6">
                         <h2 className="text-xl font-semibold flex items-center gap-2 mb-4">
-                            <Shield className="w-6 h-6 text-green-400" />
+                            <Shield className="w-6 h-6 text-innoq-green" />
                             Prevention Strategies
                         </h2>
                         <div className="grid md:grid-cols-2 gap-4">
                             <div>
-                                <h3 className="text-yellow-400 font-medium mb-2">Model Verification</h3>
-                                <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+                                <h3 className="text-innoq-apricot font-medium mb-2">Model Verification</h3>
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Verify model checksums and signatures</li>
                                     <li>Use trusted model repositories</li>
                                     <li>Implement model validation pipelines</li>
                                 </ul>
                             </div>
                             <div>
-                                <h3 className="text-yellow-400 font-medium mb-2">Runtime Protection</h3>
-                                <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+                                <h3 className="text-innoq-apricot font-medium mb-2">Runtime Protection</h3>
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Monitor model behavior changes</li>
                                     <li>Implement input/output filtering</li>
                                     <li>Use secure model deployment practices</li>

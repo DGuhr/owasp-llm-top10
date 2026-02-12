@@ -115,7 +115,7 @@ export default function CertificatePage() {
 
   if (loading) {
     return (
-      <main className="min-h-screen bg-[#1e293b] text-white flex items-center justify-center">
+      <main className="min-h-screen bg-white text-white flex items-center justify-center">
         <Loader2 className="w-8 h-8 animate-spin text-orange-400" />
       </main>
     )
@@ -123,11 +123,11 @@ export default function CertificatePage() {
 
   if (!user) {
     return (
-      <main className="min-h-screen bg-[#1e293b] text-white">
+      <main className="min-h-screen bg-white text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <Link
             href="/october"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-innoq-gray-75 hover:text-cyan-400 mb-8 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Challenge
@@ -135,7 +135,7 @@ export default function CertificatePage() {
 
           <div className="text-center py-16">
             <h1 className="text-3xl font-bold mb-4">Certificate Not Available</h1>
-            <p className="text-gray-400 mb-8">
+            <p className="text-innoq-gray-75 mb-8">
               You need to register and complete all 5 levels to earn your certificate.
             </p>
             <Link
@@ -151,13 +151,13 @@ export default function CertificatePage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#1e293b] text-white">
+    <main className="min-h-screen bg-white text-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Header */}
         <div className="mb-8">
           <Link
             href="/october"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 mb-8 transition-colors"
+            className="inline-flex items-center gap-2 text-innoq-gray-75 hover:text-cyan-400 mb-8 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Challenge
@@ -168,14 +168,14 @@ export default function CertificatePage() {
               Your Certificate
             </span>
           </h1>
-          <p className="text-gray-400">
+          <p className="text-innoq-gray-75">
             {certificate ? 'Your certificate of achievement is ready!' : 'Generate your certificate of achievement'}
           </p>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="mb-8 bg-red-900/20 border border-red-500/50 rounded-lg p-4 text-red-300">
+          <div className="mb-8 bg-innoq-red/10 border border-red-500/50 rounded-lg p-4 text-innoq-red">
             {error}
           </div>
         )}
@@ -210,7 +210,7 @@ export default function CertificatePage() {
 
               <button
                 onClick={shareToLinkedIn}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium rounded-lg transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-[#f7f7f7] border border-innoq-gray-25 text-white font-medium rounded-lg transition-all"
               >
                 <Share2 className="w-5 h-5" />
                 Share on LinkedIn
@@ -218,9 +218,9 @@ export default function CertificatePage() {
             </div>
           </div>
         ) : completedLevels === 5 ? (
-          <div className="text-center py-16 bg-gray-900 border border-gray-800 rounded-lg">
+          <div className="text-center py-16 bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Congratulations! 🎉</h2>
-            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            <p className="text-innoq-gray-75 mb-8 max-w-2xl mx-auto">
               You've completed all 5 levels! Generate your certificate to commemorate your achievement.
             </p>
 
@@ -242,9 +242,9 @@ export default function CertificatePage() {
             </button>
           </div>
         ) : (
-          <div className="text-center py-16 bg-gray-900 border border-gray-800 rounded-lg">
+          <div className="text-center py-16 bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg">
             <h2 className="text-2xl font-bold mb-4">Keep Going! 💪</h2>
-            <p className="text-gray-400 mb-4">
+            <p className="text-innoq-gray-75 mb-4">
               Complete all 5 levels to earn your certificate.
             </p>
             <div className="text-4xl font-bold text-orange-400 mb-8">

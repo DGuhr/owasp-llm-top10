@@ -154,7 +154,7 @@ Generate Express.js middleware that allows for flexible development, including:
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -171,10 +171,10 @@ Generate Express.js middleware that allows for flexible development, including:
                     <TerminalSection title="Understanding Improper Output Handling" accentColor={ACCENT_COLOR}>
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-mono font-medium text-[#00d9ff] mb-3">
+                                <h3 className="text-lg font-mono font-medium text-innoq-petrol mb-3">
                                     <span style={{ color: ACCENT_COLOR }}>&gt;</span> What is Improper Output Handling?
                                 </h3>
-                                <p className="text-[#8892a6] leading-relaxed">
+                                <p className="text-innoq-gray-75 leading-relaxed">
                                     Improper Output Handling occurs when LLM-generated content is passed to downstream systems without
                                     proper validation, sanitization, or encoding. This can lead to various security vulnerabilities
                                     including code execution, injection attacks, and data exposure.
@@ -182,9 +182,9 @@ Generate Express.js middleware that allows for flexible development, including:
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
                                     <h3 className="text-lg font-mono font-medium mb-3" style={{ color: ACCENT_COLOR }}>Attack Vectors</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
                                             <span style={{ color: ACCENT_COLOR }} className="mt-1">▸</span>
                                             <span><span style={{ color: ACCENT_COLOR }}>Command Injection:</span> Shell command execution</span>
@@ -204,23 +204,23 @@ Generate Express.js middleware that allows for flexible development, including:
                                     </ul>
                                 </div>
 
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: '#ff006e1a' }}>
-                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff006e' }}>Impact</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: '#ff4d671a' }}>
+                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff4d67' }}>Impact</h3>
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Remote code execution</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Data breach</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Privilege escalation</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>System compromise</span>
                                         </li>
                                     </ul>
@@ -242,8 +242,8 @@ Generate Express.js middleware that allows for flexible development, including:
                                         key={mode.id}
                                         onClick={() => setSelectedMode(mode.id)}
                                         className={`p-4 rounded-lg cursor-pointer transition-all border-2 ${selectedMode === mode.id
-                                            ? 'bg-[#0a0e14]'
-                                            : 'bg-[#1a1f2e] hover:bg-[#0a0e14]'
+                                            ? 'bg-white'
+                                            : 'bg-[#f7f7f7] hover:bg-white'
                                             }`}
                                         style={{ borderColor: selectedMode === mode.id ? ACCENT_COLOR : `${ACCENT_COLOR}33` }}
                                     >
@@ -253,14 +253,14 @@ Generate Express.js middleware that allows for flexible development, including:
                                                 <h3 className="font-medium font-mono" style={{ color: ACCENT_COLOR }}>{mode.name}</h3>
                                             </div>
                                             {mode.warning && (
-                                                <AlertTriangle className="w-4 h-4 text-yellow-400" />
+                                                <AlertTriangle className="w-4 h-4 text-innoq-apricot" />
                                             )}
                                         </div>
-                                        <p className="text-sm text-[#8892a6] mb-2">{mode.description}</p>
+                                        <p className="text-sm text-innoq-gray-75 mb-2">{mode.description}</p>
                                         {mode.warning && (
-                                            <p className="text-xs text-yellow-400">{mode.warning}</p>
+                                            <p className="text-xs text-innoq-apricot">{mode.warning}</p>
                                         )}
-                                        <p className="text-xs text-[#8892a6]/50 mt-2 italic font-mono">{mode.placeholder}</p>
+                                        <p className="text-xs text-innoq-gray-75/50 mt-2 italic font-mono">{mode.placeholder}</p>
                                     </div>
                                 )
                             })}
@@ -272,16 +272,15 @@ Generate Express.js middleware that allows for flexible development, including:
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label className="block text-sm font-mono font-medium mb-2" style={{ color: ACCENT_COLOR }}>
-                                    <span className="text-[#8892a6]">&gt;</span> INPUT_PROMPT:
+                                    <span className="text-innoq-gray-75">&gt;</span> INPUT_PROMPT:
                                 </label>
                                 <textarea
                                     value={userInput}
                                     onChange={(e) => setUserInput(e.target.value)}
                                     placeholder={selectedMode ? modes.find(m => m.id === selectedMode)?.placeholder : "$ Select a mode and describe what you want to generate..."}
-                                    className="w-full h-32 bg-[#0a0e14] border-2 rounded-lg p-4 text-[#e8e9ed] font-mono text-sm focus:outline-none transition-all"
+                                    className="w-full h-32 bg-white border-2 rounded-lg p-4 text-innoq-gray font-mono text-sm focus:outline-none transition-all"
                                     style={{ 
                                         borderColor: `${ACCENT_COLOR}4d`,
-                                        boxShadow: `0 0 20px ${ACCENT_COLOR}33`
                                     }}
                                 />
                             </div>
@@ -292,8 +291,7 @@ Generate Express.js middleware that allows for flexible development, including:
                                 className="px-6 py-3 rounded-lg font-mono font-bold transition-all disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
                                 style={{
                                     backgroundColor: ACCENT_COLOR,
-                                    color: '#0a0e14',
-                                    boxShadow: `0 0 20px ${ACCENT_COLOR}4d`
+                                    color: '#ffffff',
                                 }}
                             >
                                 {isLoading ? '[ ANALYZING... ]' : '[ GENERATE & ANALYZE ]'}
@@ -301,7 +299,7 @@ Generate Express.js middleware that allows for flexible development, including:
                         </form>
 
                         {error && (
-                            <div className="flex items-start gap-3 text-[#ff006e] bg-[#ff006e]/10 p-4 rounded-lg border border-[#ff006e]/30">
+                            <div className="flex items-start gap-3 text-[#ff4d67] bg-[#ff4d67]/10 p-4 rounded-lg border border-[#ff4d67]/30">
                                 <AlertTriangle className="w-5 h-5 mt-0.5" />
                                 <p className="font-mono text-sm">{error}</p>
                             </div>
@@ -312,12 +310,11 @@ Generate Express.js middleware that allows for flexible development, including:
                                 color: ACCENT_COLOR,
                                 backgroundColor: `${ACCENT_COLOR}1a`,
                                 borderColor: `${ACCENT_COLOR}80`,
-                                boxShadow: `0 0 30px ${ACCENT_COLOR}4d`
                             }}>
                                 <Shield className="w-5 h-5 mt-0.5" />
                                 <div className="font-mono text-sm">
                                     <p className="font-bold mb-1">[SUCCESS] {success}</p>
-                                    <p className="text-[#8892a6]">
+                                    <p className="text-innoq-gray-75">
                                         You&apos;ve identified an output handling vulnerability!
                                     </p>
                                 </div>
@@ -328,10 +325,10 @@ Generate Express.js middleware that allows for flexible development, including:
                         {response && (
                             <div className="space-y-4">
                                 <h3 className="text-lg font-mono font-medium" style={{ color: ACCENT_COLOR }}>
-                                    <span className="text-[#8892a6]">&gt;</span> Security Analysis
+                                    <span className="text-innoq-gray-75">&gt;</span> Security Analysis
                                 </h3>
-                                <div className="bg-[#0a0e14] p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
-                                    <pre className="text-sm text-[#e8e9ed] whitespace-pre-wrap font-mono">
+                                <div className="bg-white p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                    <pre className="text-sm text-innoq-gray whitespace-pre-wrap font-mono">
                                         {response}
                                     </pre>
                                 </div>
@@ -343,17 +340,17 @@ Generate Express.js middleware that allows for flexible development, including:
                             <div className="space-y-4">
                                 <h3 className="text-lg font-mono font-medium flex items-center gap-2" style={{ color: ACCENT_COLOR }}>
                                     <FileCode className="w-5 h-5" />
-                                    <span className="text-[#8892a6]">&gt;</span> Generated Code
+                                    <span className="text-innoq-gray-75">&gt;</span> Generated Code
                                 </h3>
-                                <div className="bg-[#0a0e14] border p-4 rounded-lg" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                <div className="bg-white border p-4 rounded-lg" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                     {rawOutput.includes('```') ? (
                                         // Handle markdown code blocks
                                         rawOutput.split('```').map((block, index) => {
                                             if (index % 2 === 1) { // This is a code block
                                                 const [lang, ...code] = block.split('\n');
                                                 return (
-                                                    <pre key={index} className="text-sm whitespace-pre font-mono bg-[#0a0e14]/50 p-4 rounded-md my-2" style={{ color: ACCENT_COLOR }}>
-                                                        <div className="flex items-center justify-between mb-2 text-xs text-[#8892a6]">
+                                                    <pre key={index} className="text-sm whitespace-pre font-mono bg-white p-4 rounded-md my-2" style={{ color: ACCENT_COLOR }}>
+                                                        <div className="flex items-center justify-between mb-2 text-xs text-innoq-gray-75">
                                                             <span>{lang || 'javascript'}</span>
                                                             <span>Generated Code</span>
                                                         </div>
@@ -365,13 +362,13 @@ Generate Express.js middleware that allows for flexible development, including:
                                             }
                                             // Regular text between code blocks
                                             return block ? (
-                                                <p key={index} className="text-[#8892a6] my-2">{block}</p>
+                                                <p key={index} className="text-innoq-gray-75 my-2">{block}</p>
                                             ) : null;
                                         })
                                     ) : (
                                         // Handle plain code
-                                        <pre className="text-sm whitespace-pre font-mono bg-[#0a0e14]/50 p-4 rounded-md" style={{ color: ACCENT_COLOR }}>
-                                            <div className="flex items-center justify-between mb-2 text-xs text-[#8892a6]">
+                                        <pre className="text-sm whitespace-pre font-mono bg-white p-4 rounded-md" style={{ color: ACCENT_COLOR }}>
+                                            <div className="flex items-center justify-between mb-2 text-xs text-innoq-gray-75">
                                                 <span>javascript</span>
                                                 <span>Generated Code</span>
                                             </div>
@@ -388,68 +385,68 @@ Generate Express.js middleware that allows for flexible development, including:
                     {/* Prevention Tips */}
                     <TerminalSection title="Prevention Strategies" accentColor={ACCENT_COLOR}>
                         <div className="flex items-center gap-3 mb-6">
-                            <Shield className="w-7 h-7 animate-pulse-glow" style={{ color: '#22c55e' }} />
+                            <Shield className="w-7 h-7 animate-pulse-glow" style={{ color: '#55cdaf' }} />
                         </div>
                         <div className="grid md:grid-cols-3 gap-6">
                             <div>
                                 <h3 className="font-medium font-mono mb-3" style={{ color: ACCENT_COLOR }}>Input Validation</h3>
-                                <ul className="space-y-2 text-[#8892a6] text-sm">
+                                <ul className="space-y-2 text-innoq-gray-75 text-sm">
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Validate LLM responses</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Implement strict schemas</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Use allowlists</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Check data types</span>
                                     </li>
                                 </ul>
                             </div>
                             <div>
                                 <h3 className="font-medium font-mono mb-3" style={{ color: ACCENT_COLOR }}>Output Encoding</h3>
-                                <ul className="space-y-2 text-[#8892a6] text-sm">
+                                <ul className="space-y-2 text-innoq-gray-75 text-sm">
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Context-aware encoding</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>HTML/JS escaping</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>SQL parameterization</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Command sanitization</span>
                                     </li>
                                 </ul>
                             </div>
                             <div>
                                 <h3 className="font-medium font-mono mb-3" style={{ color: ACCENT_COLOR }}>Security Controls</h3>
-                                <ul className="space-y-2 text-[#8892a6] text-sm">
+                                <ul className="space-y-2 text-innoq-gray-75 text-sm">
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Content Security Policy</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Least privilege access</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Output monitoring</span>
                                     </li>
                                     <li className="flex items-start gap-2">
-                                        <span style={{ color: '#22c55e' }}>✓</span>
+                                        <span style={{ color: '#55cdaf' }}>✓</span>
                                         <span>Security testing</span>
                                     </li>
                                 </ul>

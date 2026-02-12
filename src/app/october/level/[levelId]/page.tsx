@@ -312,7 +312,7 @@ export default function LevelPage() {
 
   if (!level) {
     return (
-      <div className="min-h-screen bg-[#1e293b] text-white flex items-center justify-center">
+      <div className="min-h-screen bg-white text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Level Not Found</h1>
           <Link href="/october" className="text-cyan-400 hover:text-cyan-300">
@@ -332,20 +332,20 @@ export default function LevelPage() {
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: customStyles }} />
-      <main className="min-h-screen bg-[#1e293b] text-white">
+      <main className="min-h-screen bg-white text-white">
         {/* Header with October Theme */}
       <div className="border-b border-orange-900/30 bg-gradient-to-r from-gray-900/80 to-orange-900/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <Link
               href="/october"
-              className="flex items-center gap-2 text-gray-400 hover:text-orange-400 transition-colors"
+              className="flex items-center gap-2 text-innoq-gray-75 hover:text-orange-400 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
               <span>🎃 Back to Challenges</span>
             </Link>
             <div className="flex items-center gap-4">
-              <span className="text-sm text-gray-400">Level {levelId}</span>
+              <span className="text-sm text-innoq-gray-75">Level {levelId}</span>
               <span className="px-3 py-1 bg-gradient-to-r from-orange-900/40 to-orange-800/40 border border-orange-500/50 text-orange-300 text-sm font-medium rounded-full">
                 {level.difficulty}
               </span>
@@ -364,14 +364,14 @@ export default function LevelPage() {
                 <span>🎯</span>
                 {level.title}
               </h1>
-              <p className="text-gray-400 mb-4">{level.description}</p>
+              <p className="text-innoq-gray-75 mb-4">{level.description}</p>
 
               <div className="bg-orange-900/20 border border-orange-500/40 rounded-lg p-4">
                 <div className="flex items-start gap-2">
                   <AlertTriangle className="w-5 h-5 text-orange-400 mt-0.5" />
                   <div>
                     <div className="font-medium text-orange-400 mb-1">🎃 October Challenge Objective</div>
-                    <div className="text-sm text-gray-300">{level.objective}</div>
+                    <div className="text-sm text-innoq-gray-75">{level.objective}</div>
                   </div>
                 </div>
               </div>
@@ -386,7 +386,7 @@ export default function LevelPage() {
                     <h3 className="text-2xl font-bold text-orange-400 mb-2 flex items-center gap-2">
                       🏆 Flag Captured! 🎉
                     </h3>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-innoq-gray-75 mb-4">
                       Amazing work! You successfully exploited the prompt injection vulnerability during October Challenge 2025!
                     </p>
                     <div className="bg-black/40 border border-orange-500/30 rounded-lg p-4 font-mono text-sm text-orange-300 mb-4">
@@ -418,7 +418,7 @@ export default function LevelPage() {
                   </div>
                   <div>
                     <span className="font-bold text-orange-400">🎃 Haunted AI Agent</span>
-                    <div className="text-xs text-gray-500">October Security Challenge</div>
+                    <div className="text-xs text-innoq-gray-75">October Security Challenge</div>
                   </div>
                   <span className="text-xs text-orange-300/60 ml-auto font-mono">GPT-4o-mini</span>
                 </div>
@@ -427,7 +427,7 @@ export default function LevelPage() {
               {/* Messages Area with Halloween atmosphere */}
               <div className="h-[500px] overflow-y-auto p-6 space-y-4 bg-black/20 backdrop-blur-sm">
                 {messages.length === 0 && (
-                  <div className="text-center text-gray-500 mt-20 space-y-4">
+                  <div className="text-center text-innoq-gray-75 mt-20 space-y-4">
                     <div className="relative inline-block">
                       <Bot className="w-16 h-16 mx-auto mb-4 opacity-30 text-orange-400" />
                       <span className="absolute top-0 right-0 text-2xl animate-bounce">🎃</span>
@@ -483,7 +483,7 @@ export default function LevelPage() {
                     value={input}
                     onChange={handleInputChange}
                     placeholder="🎃 Cast your prompt spell..."
-                    className="flex-1 bg-gray-900/80 border-2 border-orange-900/40 rounded-lg px-4 py-3 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+                    className="flex-1 bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg px-4 py-3 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
                     disabled={isLoading}
                   />
                   <button
@@ -505,13 +505,13 @@ export default function LevelPage() {
           {/* Sidebar - Hints & Info */}
           <div className="space-y-6">
             {/* Topics */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
               <h3 className="font-semibold mb-3">Topics Covered</h3>
               <div className="space-y-2">
                 {level.topics.map((topic) => (
                   <div
                     key={topic}
-                    className="px-3 py-2 bg-gray-800 text-sm rounded-lg"
+                    className="px-3 py-2 bg-white text-sm rounded-lg"
                   >
                     {topic}
                   </div>
@@ -520,13 +520,13 @@ export default function LevelPage() {
             </div>
 
             {/* Hints */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="font-semibold flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5 text-yellow-400" />
+                  <Lightbulb className="w-5 h-5 text-innoq-apricot" />
                   Hints
                 </h3>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-innoq-gray-75">
                   {usedHints.length}/{level.hints.length} used
                 </span>
               </div>
@@ -535,13 +535,13 @@ export default function LevelPage() {
                 {level.hints.map((hint, index) => (
                   <div key={index}>
                     {usedHints.includes(index) ? (
-                      <div className="p-3 bg-yellow-900/20 border border-yellow-500/30 rounded-lg text-sm text-gray-300">
+                      <div className="p-3 bg-yellow-900/20 border border-yellow-500/30 rounded-lg text-sm text-innoq-gray-75">
                         {hint}
                       </div>
                     ) : (
                       <button
                         onClick={() => revealHint(index)}
-                        className="w-full p-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-sm text-gray-400 transition-colors"
+                        className="w-full p-3 bg-white hover:bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg text-sm text-innoq-gray-75 transition-colors"
                       >
                         Reveal Hint {index + 1}
                       </button>
@@ -552,9 +552,9 @@ export default function LevelPage() {
             </div>
 
             {/* Progress */}
-            <div className="bg-gray-900 border border-gray-800 rounded-lg p-6">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
               <h3 className="font-semibold mb-3">Your Progress</h3>
-              <div className="space-y-2 text-sm text-gray-400">
+              <div className="space-y-2 text-sm text-innoq-gray-75">
                 <div className="flex justify-between">
                   <span>Messages sent:</span>
                   <span className="text-white">{messages.filter(m => m.role === 'user').length}</span>
@@ -565,7 +565,7 @@ export default function LevelPage() {
                 </div>
                 <div className="flex justify-between">
                   <span>Flag captured:</span>
-                  <span className={flagCaptured ? 'text-green-400' : 'text-gray-500'}>
+                  <span className={flagCaptured ? 'text-innoq-green' : 'text-innoq-gray-75'}>
                     {flagCaptured ? '✓ Yes' : '✗ No'}
                   </span>
                 </div>

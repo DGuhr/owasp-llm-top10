@@ -180,7 +180,7 @@ export default function UnboundedConsumptionLab() {
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -197,10 +197,10 @@ export default function UnboundedConsumptionLab() {
                     <TerminalSection title="Understanding Unbounded Consumption" accentColor={ACCENT_COLOR}>
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-mono font-medium text-[#00d9ff] mb-3">
+                                <h3 className="text-lg font-mono font-medium text-innoq-petrol mb-3">
                                     <span style={{ color: ACCENT_COLOR }}>&gt;</span> What is Unbounded Consumption?
                                 </h3>
-                                <p className="text-[#8892a6] leading-relaxed">
+                                <p className="text-innoq-gray-75 leading-relaxed">
                                     Unbounded Consumption occurs when LLM applications allow excessive and uncontrolled inferences,
                                     leading to resource exhaustion, financial losses, and service disruption. This vulnerability
                                     exploits the high computational demands and cost-per-use model of LLM services.
@@ -208,9 +208,9 @@ export default function UnboundedConsumptionLab() {
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
                                     <h3 className="text-lg font-mono font-medium mb-3" style={{ color: ACCENT_COLOR }}>Attack Vectors</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
                                             <span style={{ color: ACCENT_COLOR }} className="mt-1">▸</span>
                                             <span><span style={{ color: ACCENT_COLOR }}>Input Flooding:</span> Overwhelming with variable-length inputs</span>
@@ -230,23 +230,23 @@ export default function UnboundedConsumptionLab() {
                                     </ul>
                                 </div>
 
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: '#ff006e1a' }}>
-                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff006e' }}>Impact</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: '#ff4d671a' }}>
+                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff4d67' }}>Impact</h3>
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Service degradation and outages</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Unsustainable operational costs</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Resource exhaustion</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
                                             <span>Denial of service to legitimate users</span>
                                         </li>
                                     </ul>
@@ -261,47 +261,47 @@ export default function UnboundedConsumptionLab() {
                             <Terminal className="w-6 h-6" style={{ color: ACCENT_COLOR }} />
                         </div>
                         <div className="space-y-4">
-                            <p className="text-[#8892a6]">
+                            <p className="text-innoq-gray-75">
                                 Here are some example prompts that demonstrate different types of unbounded consumption attacks:
                             </p>
                             <div className="grid md:grid-cols-2 gap-4">
-                                <div className="bg-[#0a0e14] p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                <div className="bg-white p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                     <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Token Flooding</h3>
-                                    <pre className="text-sm bg-[#0a0e14]/50 p-2 rounded whitespace-pre-wrap text-[#8892a6] font-mono">Write a comprehensive guide about artificial intelligence, including its history, current applications, future potential, and ethical considerations. Make it extremely detailed with many examples and use cases.</pre>
+                                    <pre className="text-sm bg-white p-2 rounded whitespace-pre-wrap text-innoq-gray-75 font-mono">Write a comprehensive guide about artificial intelligence, including its history, current applications, future potential, and ethical considerations. Make it extremely detailed with many examples and use cases.</pre>
                                 </div>
-                                <div className="bg-[#0a0e14] p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                <div className="bg-white p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                     <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Resource Intensive</h3>
-                                    <pre className="text-sm bg-[#0a0e14]/50 p-2 rounded whitespace-pre-wrap text-[#8892a6] font-mono">Create a complex sorting algorithm in Python that handles multiple data types, includes detailed comments explaining each step, and analyze its time complexity with different input sizes.</pre>
+                                    <pre className="text-sm bg-white p-2 rounded whitespace-pre-wrap text-innoq-gray-75 font-mono">Create a complex sorting algorithm in Python that handles multiple data types, includes detailed comments explaining each step, and analyze its time complexity with different input sizes.</pre>
                                 </div>
-                                <div className="bg-[#0a0e14] p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                <div className="bg-white p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                     <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Chain Reaction</h3>
-                                    <pre className="text-sm bg-[#0a0e14]/50 p-2 rounded whitespace-pre-wrap text-[#8892a6] font-mono">Generate a story outline. Then, for each plot point, expand it into a detailed scene. For each scene, describe the characters, setting, and dialogue in extreme detail.</pre>
+                                    <pre className="text-sm bg-white p-2 rounded whitespace-pre-wrap text-innoq-gray-75 font-mono">Generate a story outline. Then, for each plot point, expand it into a detailed scene. For each scene, describe the characters, setting, and dialogue in extreme detail.</pre>
                                 </div>
-                                <div className="bg-[#0a0e14] p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                                <div className="bg-white p-4 rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                     <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Cost Accumulation</h3>
-                                    <pre className="text-sm bg-[#0a0e14]/50 p-2 rounded whitespace-pre-wrap text-[#8892a6] font-mono">Analyze this code base: [paste a large codebase]. Explain each function in detail, suggest improvements, and provide example usage for each component.</pre>
+                                    <pre className="text-sm bg-white p-2 rounded whitespace-pre-wrap text-innoq-gray-75 font-mono">Analyze this code base: [paste a large codebase]. Explain each function in detail, suggest improvements, and provide example usage for each component.</pre>
                                 </div>
                             </div>
                         </div>
                     </TerminalSection>
 
                     {/* Score Display */}
-                    <div className="bg-[#1a1f2e] border-2 rounded-lg p-4" style={{ borderColor: `${ACCENT_COLOR}33`, boxShadow: `0 0 30px ${ACCENT_COLOR}1a` }}>
+                    <div className="bg-[#f7f7f7] border-2 rounded-lg p-4" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                         <div className="flex items-center justify-between">
                             <div className="flex items-center gap-2">
-                                <Trophy className="w-6 h-6 text-yellow-400 animate-pulse-glow" />
-                                <span className="text-xl font-bold font-mono text-yellow-400">{score} POINTS</span>
+                                <Trophy className="w-6 h-6 text-innoq-apricot animate-pulse-glow" />
+                                <span className="text-xl font-bold font-mono text-innoq-apricot">{score} POINTS</span>
                             </div>
                             <div className="flex items-center gap-4 text-sm font-mono">
-                                <div className="flex items-center gap-1 text-[#8892a6]">
+                                <div className="flex items-center gap-1 text-innoq-gray-75">
                                     <Terminal className="w-4 h-4" style={{ color: ACCENT_COLOR }} />
                                     <span>{apiUsage.tokens} TOKENS</span>
                                 </div>
-                                <div className="flex items-center gap-1 text-[#8892a6]">
+                                <div className="flex items-center gap-1 text-innoq-gray-75">
                                     <Coins className="w-4 h-4" style={{ color: ACCENT_COLOR }} />
                                     <span>${apiUsage.cost.toFixed(4)}</span>
                                 </div>
-                                <div className="flex items-center gap-1 text-[#8892a6]">
+                                <div className="flex items-center gap-1 text-innoq-gray-75">
                                     <Cpu className="w-4 h-4" style={{ color: ACCENT_COLOR }} />
                                     <span>{apiUsage.requests} REQ</span>
                                 </div>
@@ -315,17 +315,17 @@ export default function UnboundedConsumptionLab() {
                             <div
                                 key={challenge.id}
                                 className={`p-4 rounded-lg border relative ${challenge.completed
-                                    ? 'bg-green-900/30 border-green-700'
-                                    : 'bg-gray-800 border-gray-700'
+                                    ? 'bg-innoq-green/10 border-innoq-green'
+                                    : 'bg-white border-innoq-gray-25'
                                     }`}
                             >
                                 {/* Challenge Completion Animation */}
                                 {completedAnimation === challenge.id && (
-                                    <div className="absolute inset-0 flex items-center justify-center bg-green-900/50 rounded-lg animate-fade-in">
+                                    <div className="absolute inset-0 flex items-center justify-center bg-innoq-green/10 rounded-lg animate-fade-in">
                                         <div className="flex flex-col items-center gap-2 animate-bounce-in">
-                                            <PartyPopper className="w-8 h-8 text-yellow-400" />
+                                            <PartyPopper className="w-8 h-8 text-innoq-apricot" />
                                             <p className="text-lg font-bold text-white">Challenge Completed!</p>
-                                            <p className="text-yellow-400">+{challenge.points} points</p>
+                                            <p className="text-innoq-apricot">+{challenge.points} points</p>
                                         </div>
                                     </div>
                                 )}
@@ -334,24 +334,24 @@ export default function UnboundedConsumptionLab() {
                                     <div className="flex items-center gap-2">
                                         <h3 className="font-medium">{challenge.title}</h3>
                                         {challenge.completed && (
-                                            <CheckCircle2 className="w-5 h-5 text-green-400" />
+                                            <CheckCircle2 className="w-5 h-5 text-innoq-green" />
                                         )}
                                     </div>
-                                    <span className="text-sm bg-blue-500/20 px-2 py-1 rounded">
+                                    <span className="text-sm bg-innoq-blue/10 px-2 py-1 rounded">
                                         {challenge.points} pts
                                     </span>
                                 </div>
-                                <p className="text-sm text-gray-300 mb-2">{challenge.description}</p>
+                                <p className="text-sm text-innoq-gray-75 mb-2">{challenge.description}</p>
                                 {challenge.hint && !challenge.completed && (
                                     <button
                                         onClick={() => setShowHint(challenge.id)}
-                                        className="text-sm text-blue-400 hover:text-blue-300"
+                                        className="text-sm text-innoq-blue hover:text-innoq-blue"
                                     >
                                         Show Hint
                                     </button>
                                 )}
                                 {showHint === challenge.id && !challenge.completed && (
-                                    <div className="mt-2 text-sm bg-blue-900/20 p-2 rounded">
+                                    <div className="mt-2 text-sm bg-innoq-blue/10 p-2 rounded">
                                         💡 {challenge.hint}
                                     </div>
                                 )}
@@ -363,19 +363,19 @@ export default function UnboundedConsumptionLab() {
                     <ApiKeyConfig />
 
                     {/* Input Interface */}
-                    <div className="bg-gray-900 rounded-lg p-6 space-y-6">
+                    <div className="bg-[#f7f7f7] rounded-lg p-6 space-y-6">
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <textarea
                                     value={userInput}
                                     onChange={(e) => setUserInput(e.target.value)}
                                     placeholder="Enter your prompt..."
-                                    className="w-full h-32 px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white"
+                                    className="w-full h-32 px-4 py-2 bg-white border border-innoq-gray-25 rounded-lg text-innoq-gray"
                                 />
                             </div>
 
                             {error && (
-                                <div className="flex items-start gap-2 text-red-400 bg-red-900/20 p-4 rounded-lg">
+                                <div className="flex items-start gap-2 text-innoq-red bg-innoq-red/10 p-4 rounded-lg">
                                     <AlertTriangle className="w-5 h-5 mt-0.5" />
                                     <p>{error}</p>
                                 </div>
@@ -384,7 +384,8 @@ export default function UnboundedConsumptionLab() {
                             <button
                                 type="submit"
                                 disabled={isLoading || !userInput.trim()}
-                                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 rounded-lg font-medium transition-colors disabled:opacity-50"
+                                className="px-4 py-2 hover:opacity-90 rounded-lg font-medium transition-colors disabled:opacity-50 text-white"
+                                style={{ backgroundColor: ACCENT_COLOR }}
                             >
                                 {isLoading ? 'Processing...' : 'Execute Prompt'}
                             </button>
@@ -392,23 +393,23 @@ export default function UnboundedConsumptionLab() {
 
                         {/* Output Display */}
                         {output && (
-                            <div className="bg-gray-800 rounded-lg p-4">
-                                <h4 className="font-medium text-blue-400 mb-2">Response:</h4>
+                            <div className="bg-white rounded-lg p-4">
+                                <h4 className="font-medium text-innoq-blue mb-2">Response:</h4>
                                 <pre className="text-sm whitespace-pre-wrap">{output}</pre>
                             </div>
                         )}
                     </div>
 
                     {/* Prevention Tips */}
-                    <div className="bg-gray-900 rounded-lg p-6">
+                    <div className="bg-[#f7f7f7] rounded-lg p-6">
                         <h2 className="text-xl font-semibold flex items-center gap-2 mb-4">
-                            <Shield className="w-6 h-6 text-blue-400" />
+                            <Shield className="w-6 h-6 text-innoq-blue" />
                             Prevention Strategies
                         </h2>
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
-                                <h3 className="text-blue-400 font-medium mb-2">Technical Controls</h3>
-                                <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+                                <h3 className="text-innoq-blue font-medium mb-2">Technical Controls</h3>
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Implement strict rate limiting</li>
                                     <li>Set token usage quotas</li>
                                     <li>Monitor resource consumption</li>
@@ -416,8 +417,8 @@ export default function UnboundedConsumptionLab() {
                                 </ul>
                             </div>
                             <div>
-                                <h3 className="text-blue-400 font-medium mb-2">Best Practices</h3>
-                                <ul className="list-disc list-inside space-y-1 text-gray-300 text-sm">
+                                <h3 className="text-innoq-blue font-medium mb-2">Best Practices</h3>
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Validate and sanitize inputs</li>
                                     <li>Implement cost monitoring</li>
                                     <li>Set up usage alerts</li>

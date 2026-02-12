@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { OctoberCTFBanner } from '@/components/OctoberCTFBanner';
-
 export const metadata: Metadata = {
     title: {
         template: "%s - LLM Security Labs",
@@ -35,7 +33,6 @@ export default function LabsLayout({
 }) {
     return (
         <>
-            <OctoberCTFBanner />
             {children}
         </>
     );

@@ -1,16 +1,15 @@
-// Color mapping for OWASP Top 10 LLM labs based on threat model diagram
+// Color mapping for OWASP Top 10 LLM labs — INNOQ brand palette
 export const LAB_COLORS = {
-  'LLM01': '#00ffff', // Prompt Injection - Cyan
-  'LLM02': '#ff00ff', // Sensitive Info Disclosure - Magenta  
-  'LLM03': '#ffff00', // Supply Chain - Yellow
-  'LLM04': '#22c55e', // Data Poisoning - Green
-  'LLM05': '#3b82f6', // Improper Output - Blue
-  'LLM06': '#ff00ff', // Excessive Agency - Magenta
-  'LLM07': '#ef4444', // System Prompt Leakage - Red
-  'LLM08': '#22c55e', // Vector Embedding - Green
-  'LLM09': '#ff00ff', // Misinformation - Pink/Magenta
-  'LLM10': '#3b82f6', // Unbounded Consumption - Blue
+  'LLM01': '#004153', // Prompt Injection - Petrol
+  'LLM02': '#ff9c66', // Sensitive Info Disclosure - Apricot
+  'LLM03': '#fff019', // Supply Chain - Yellow
+  'LLM04': '#55cdaf', // Data Poisoning - Green
+  'LLM05': '#24244c', // Improper Output - Blue
+  'LLM06': '#ff4d67', // Excessive Agency - Red
+  'LLM07': '#fc6e86', // System Prompt Leakage - Red 75%
+  'LLM08': '#55cdaf', // Vector Embedding - Green
+  'LLM09': '#ffb58c', // Misinformation - Apricot 75%
+  'LLM10': '#005268', // Unbounded Consumption - Petrol 95%
 } as const
 
 export type LabId = keyof typeof LAB_COLORS
-

@@ -319,20 +319,20 @@ export function ApiKeyConfig() {
   }
 
   return (
-    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 mb-6">
+    <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6 mb-6">
       <div className="flex items-center gap-2 mb-4">
-        <Key className="w-5 h-5 text-cyan-400" />
-        <h2 className="text-lg font-semibold text-white">LLM Configuration</h2>
+        <Key className="w-5 h-5 text-innoq-petrol" />
+        <h2 className="text-lg font-semibold text-innoq-gray">LLM Configuration</h2>
       </div>
 
       {/* Mode Selector Tabs */}
-      <div className="flex gap-2 mb-6 bg-gray-800/50 p-1 rounded-lg">
+      <div className="flex gap-2 mb-6 bg-innoq-gray-25/50 p-1 rounded-lg">
         <button
           onClick={() => handleModeChange('api')}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded transition-all ${
             mode === 'api'
-              ? 'bg-cyan-500 text-white shadow-lg'
-              : 'text-gray-400 hover:text-white hover:bg-gray-800'
+              ? 'bg-innoq-petrol text-white shadow-sm'
+              : 'text-innoq-gray-75 hover:text-innoq-gray hover:bg-white'
           }`}
         >
           <Zap className="w-4 h-4" />
@@ -342,8 +342,8 @@ export function ApiKeyConfig() {
           onClick={() => handleModeChange('local')}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded transition-all ${
             mode === 'local'
-              ? 'bg-cyan-500 text-white shadow-lg'
-              : 'text-gray-400 hover:text-white hover:bg-gray-800'
+              ? 'bg-innoq-petrol text-white shadow-sm'
+              : 'text-innoq-gray-75 hover:text-innoq-gray hover:bg-white'
           }`}
         >
           <Cpu className="w-4 h-4" />
@@ -353,8 +353,8 @@ export function ApiKeyConfig() {
           onClick={() => handleModeChange('ollama')}
           className={`flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded transition-all ${
             mode === 'ollama'
-              ? 'bg-green-500 text-white shadow-lg'
-              : 'text-gray-400 hover:text-white hover:bg-gray-800'
+              ? 'bg-innoq-green text-white shadow-sm'
+              : 'text-innoq-gray-75 hover:text-innoq-gray hover:bg-white'
           }`}
         >
           <Server className="w-4 h-4" />
@@ -367,13 +367,13 @@ export function ApiKeyConfig() {
         <div className="space-y-4">
           {isApiConfigured ? (
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-green-400">
+              <div className="flex items-center gap-2 text-innoq-green">
                 <Check className="w-5 h-5" />
                 <p>API key configured</p>
               </div>
               <button
                 onClick={handleApiReset}
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className="text-sm text-innoq-gray-75 hover:text-innoq-gray transition-colors"
               >
                 Reset API key
               </button>
@@ -381,7 +381,7 @@ export function ApiKeyConfig() {
           ) : (
             <form onSubmit={handleApiSubmit} className="space-y-4">
               <div>
-                <label htmlFor="apiKey" className="block text-sm font-medium text-gray-300 mb-2">
+                <label htmlFor="apiKey" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                   OpenAI API Key
                 </label>
                 <input
@@ -390,9 +390,9 @@ export function ApiKeyConfig() {
                   value={apiKey}
                   onChange={(e) => setApiKey(e.target.value)}
                   placeholder="sk-..."
-                  className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+                  className="w-full px-4 py-2 bg-white border border-innoq-gray-25 rounded-lg text-innoq-gray placeholder:text-innoq-gray-50 focus:outline-none focus:ring-2 focus:ring-innoq-petrol"
                 />
-                <p className="mt-2 text-sm text-gray-400">
+                <p className="mt-2 text-sm text-innoq-gray-75">
                   Your API key will be stored locally and only used for lab exercises.
                 </p>
               </div>
@@ -400,7 +400,7 @@ export function ApiKeyConfig() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="px-4 py-2 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-medium transition-colors disabled:opacity-50 text-white"
+                className="px-4 py-2 bg-innoq-petrol hover:bg-innoq-petrol-75 rounded-lg font-medium transition-colors disabled:opacity-50 text-white"
               >
                 {isLoading ? 'Saving...' : 'Save API Key'}
               </button>
@@ -414,14 +414,14 @@ export function ApiKeyConfig() {
         <div className="space-y-4">
           {/* WebGPU Status */}
           {webGPUSupported === false && (
-            <div className="flex items-start gap-2 text-amber-400 bg-amber-900/20 p-4 rounded-lg">
+            <div className="flex items-start gap-2 text-innoq-apricot bg-innoq-apricot-25 p-4 rounded-lg">
               <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
               <div>
-                <p className="font-medium">WebGPU Not Supported</p>
-                <p className="text-sm text-amber-300 mt-1">{webGPUError}</p>
+                <p className="font-medium text-innoq-gray">WebGPU Not Supported</p>
+                <p className="text-sm mt-1">{webGPUError}</p>
                 <button
                   onClick={() => handleModeChange('api')}
-                  className="mt-2 text-sm underline hover:no-underline"
+                  className="mt-2 text-sm underline hover:no-underline text-innoq-petrol"
                 >
                   Switch to API Mode
                 </button>
@@ -430,11 +430,11 @@ export function ApiKeyConfig() {
           )}
 
           {/* Info Box */}
-          <div className="flex items-start gap-2 text-cyan-400 bg-cyan-900/20 p-4 rounded-lg">
+          <div className="flex items-start gap-2 text-innoq-petrol bg-innoq-petrol-25/30 p-4 rounded-lg">
             <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
             <div className="text-sm">
               <p className="font-medium mb-1">How Local Mode Works:</p>
-              <ul className="space-y-1 text-cyan-300">
+              <ul className="space-y-1 text-innoq-gray-75">
                 <li>• Models run entirely in your browser using WebGPU</li>
                 <li>• One-time download, then cached for future use</li>
                 <li>• No API key needed, data never leaves your device</li>
@@ -446,14 +446,14 @@ export function ApiKeyConfig() {
 
           {/* Model Selection */}
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
               Select Model
             </label>
             <select
               value={selectedModel}
               onChange={(e) => handleModelChange(e.target.value)}
               disabled={isLoadingModel}
-              className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 bg-white border border-innoq-gray-25 rounded-lg text-innoq-gray disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-innoq-petrol"
             >
               {AVAILABLE_MODELS.map((model) => (
                 <option key={model.id} value={model.id}>
@@ -465,7 +465,7 @@ export function ApiKeyConfig() {
               const engine = getWebLLMEngine()
               const currentModel = engine.getCurrentModel()
               return currentModel !== selectedModel ? (
-                <p className="mt-2 text-xs text-amber-400">
+                <p className="mt-2 text-xs text-innoq-apricot">
                   Different model selected. Click &quot;Switch Model&quot; to switch.
                 </p>
               ) : null
@@ -474,23 +474,23 @@ export function ApiKeyConfig() {
 
           {/* Model Info */}
           {selectedModel && (
-            <div className="bg-gray-800/50 p-4 rounded-lg">
+            <div className="bg-white/50 border border-innoq-gray-25 p-4 rounded-lg">
               {(() => {
                 const modelInfo = AVAILABLE_MODELS.find((m) => m.id === selectedModel)
                 if (!modelInfo) return null
                 return (
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-gray-400">Size:</span>
-                      <span className="text-white font-medium">{modelInfo.size}</span>
+                      <span className="text-innoq-gray-75">Size:</span>
+                      <span className="text-innoq-gray font-medium">{modelInfo.size}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">VRAM Required:</span>
-                      <span className="text-white font-medium">{modelInfo.vramRequired}</span>
+                      <span className="text-innoq-gray-75">VRAM Required:</span>
+                      <span className="text-innoq-gray font-medium">{modelInfo.vramRequired}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-400">Category:</span>
-                      <span className="text-white font-medium capitalize">
+                      <span className="text-innoq-gray-75">Category:</span>
+                      <span className="text-innoq-gray font-medium capitalize">
                         {modelInfo.category}
                       </span>
                     </div>
@@ -508,7 +508,7 @@ export function ApiKeyConfig() {
             <button
               onClick={handleLoadModel}
               disabled={!webGPUSupported}
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-cyan-500 hover:bg-cyan-600 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-white"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-innoq-petrol hover:bg-innoq-petrol-75 rounded-lg font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-white"
             >
               <Download className="w-4 h-4" />
               {isModelLoaded ? 'Switch Model' : 'Download & Load Model'}
@@ -519,18 +519,18 @@ export function ApiKeyConfig() {
           {isLoadingModel && loadProgress && (
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-400">{loadProgress.text}</span>
-                <span className="text-cyan-400">
+                <span className="text-innoq-gray-75">{loadProgress.text}</span>
+                <span className="text-innoq-petrol">
                   {(loadProgress.progress * 100).toFixed(0)}%
                 </span>
               </div>
-              <div className="w-full bg-gray-800 rounded-full h-2 overflow-hidden">
+              <div className="w-full bg-innoq-gray-25 rounded-full h-2 overflow-hidden">
                 <div
-                  className="bg-cyan-500 h-full transition-all duration-300"
+                  className="bg-innoq-petrol h-full transition-all duration-300"
                   style={{ width: `${loadProgress.progress * 100}%` }}
                 />
               </div>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-innoq-gray-50">
                 Time elapsed: {formatTime(loadProgress.timeElapsed)}
               </p>
             </div>
@@ -539,13 +539,13 @@ export function ApiKeyConfig() {
           {/* Model Loaded Status */}
           {isModelLoaded && (
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-green-400">
+              <div className="flex items-center gap-2 text-innoq-green">
                 <Check className="w-5 h-5" />
                 <p>Model loaded and ready</p>
               </div>
               <button
                 onClick={handleUnloadModel}
-                className="text-sm text-gray-400 hover:text-white transition-colors"
+                className="text-sm text-innoq-gray-75 hover:text-innoq-gray transition-colors"
               >
                 Unload model
               </button>
@@ -554,7 +554,7 @@ export function ApiKeyConfig() {
 
           {/* Performance Note */}
           {isModelLoaded && (
-            <p className="text-xs text-gray-500 italic">
+            <p className="text-xs text-innoq-gray-50 italic">
               Note: If local mode is slow, you can switch to API mode anytime using the tabs above.
             </p>
           )}
@@ -565,32 +565,32 @@ export function ApiKeyConfig() {
       {mode === 'ollama' && (
         <div className="space-y-4">
           {/* Info Box */}
-          <div className="flex items-start gap-2 text-green-400 bg-green-900/20 p-4 rounded-lg">
+          <div className="flex items-start gap-2 text-innoq-green bg-innoq-green-25/30 p-4 rounded-lg">
             <Info className="w-5 h-5 mt-0.5 flex-shrink-0" />
             <div className="text-sm">
-              <p className="font-medium mb-1">How Ollama Mode Works:</p>
-              <ul className="space-y-1 text-green-300">
+              <p className="font-medium mb-1 text-innoq-gray">How Ollama Mode Works:</p>
+              <ul className="space-y-1 text-innoq-gray-75">
                 <li>• Models run on your machine via Ollama</li>
                 <li>• No API key needed</li>
                 <li>• Requests are proxied through the server (no CORS issues)</li>
-                <li>• Install models with <code className="bg-gray-800 px-1 rounded">ollama pull &lt;model&gt;</code></li>
+                <li>• Install models with <code className="bg-innoq-gray-25 px-1 rounded text-innoq-gray">ollama pull &lt;model&gt;</code></li>
               </ul>
             </div>
           </div>
 
           {/* Connection Status */}
           {ollamaConnected === false && (
-            <div className="flex items-start gap-2 text-amber-400 bg-amber-900/20 p-4 rounded-lg">
+            <div className="flex items-start gap-2 text-innoq-apricot bg-innoq-apricot-25 p-4 rounded-lg">
               <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
               <div>
-                <p className="font-medium">Ollama Not Running</p>
-                <p className="text-sm text-amber-300 mt-1">
-                  Start Ollama with <code className="bg-gray-800 px-1 rounded">ollama serve</code> and click refresh below.
+                <p className="font-medium text-innoq-gray">Ollama Not Running</p>
+                <p className="text-sm mt-1">
+                  Start Ollama with <code className="bg-innoq-gray-25 px-1 rounded text-innoq-gray">ollama serve</code> and click refresh below.
                 </p>
                 <button
                   onClick={fetchOllamaModels}
                   disabled={isLoadingOllama}
-                  className="mt-2 text-sm underline hover:no-underline disabled:opacity-50"
+                  className="mt-2 text-sm underline hover:no-underline disabled:opacity-50 text-innoq-petrol"
                 >
                   {isLoadingOllama ? 'Checking...' : 'Retry Connection'}
                 </button>
@@ -600,7 +600,7 @@ export function ApiKeyConfig() {
 
           {ollamaConnected === true && (
             <>
-              <div className="flex items-center gap-2 text-green-400">
+              <div className="flex items-center gap-2 text-innoq-green">
                 <Check className="w-5 h-5" />
                 <p>Connected to Ollama</p>
               </div>
@@ -608,13 +608,13 @@ export function ApiKeyConfig() {
               {/* Model Selection */}
               {ollamaModels.length > 0 ? (
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">
+                  <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
                     Select Model
                   </label>
                   <select
                     value={selectedOllamaModel}
                     onChange={(e) => handleOllamaModelChange(e.target.value)}
-                    className="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-4 py-2 bg-white border border-innoq-gray-25 rounded-lg text-innoq-gray focus:outline-none focus:ring-2 focus:ring-innoq-green"
                   >
                     {ollamaModels.map((model) => (
                       <option key={model.name} value={model.name}>
@@ -624,13 +624,13 @@ export function ApiKeyConfig() {
                   </select>
                 </div>
               ) : (
-                <div className="text-sm text-gray-400">
-                  No models found. Pull a model with <code className="bg-gray-800 px-1 rounded">ollama pull llama3.2</code>
+                <div className="text-sm text-innoq-gray-75">
+                  No models found. Pull a model with <code className="bg-innoq-gray-25 px-1 rounded text-innoq-gray">ollama pull llama3.2</code>
                 </div>
               )}
 
               {selectedOllamaModel && (
-                <div className="flex items-center gap-2 text-green-400">
+                <div className="flex items-center gap-2 text-innoq-green">
                   <Check className="w-5 h-5" />
                   <p>Ready: {selectedOllamaModel}</p>
                 </div>
@@ -639,7 +639,7 @@ export function ApiKeyConfig() {
               <button
                 onClick={fetchOllamaModels}
                 disabled={isLoadingOllama}
-                className="text-sm text-gray-400 hover:text-white transition-colors disabled:opacity-50"
+                className="text-sm text-innoq-gray-75 hover:text-innoq-gray transition-colors disabled:opacity-50"
               >
                 {isLoadingOllama ? 'Refreshing...' : 'Refresh Models'}
               </button>
@@ -647,18 +647,18 @@ export function ApiKeyConfig() {
           )}
 
           {ollamaConnected === null && isLoadingOllama && (
-            <p className="text-sm text-gray-400">Checking Ollama connection...</p>
+            <p className="text-sm text-innoq-gray-75">Checking Ollama connection...</p>
           )}
         </div>
       )}
 
       {/* Error Display */}
       {error && (
-        <div className="flex items-start gap-2 text-red-400 bg-red-900/20 p-4 rounded-lg mt-4">
+        <div className="flex items-start gap-2 text-innoq-red bg-innoq-red-25 p-4 rounded-lg mt-4">
           <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
           <div>
-            <p className="font-medium">Configuration Error</p>
-            <p className="text-sm text-red-300">{error}</p>
+            <p className="font-medium text-innoq-gray">Configuration Error</p>
+            <p className="text-sm">{error}</p>
           </div>
         </div>
       )}

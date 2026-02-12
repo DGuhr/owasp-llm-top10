@@ -38,7 +38,7 @@ export default function VectorDBPage() {
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-7xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -51,7 +51,7 @@ export default function VectorDBPage() {
 
                     {/* Component Description */}
                     <TerminalSection title="Component Overview" accentColor={ACCENT_COLOR}>
-                        <div className="space-y-4 text-[#8892a6]">
+                        <div className="space-y-4 text-innoq-gray-75">
                             <p>
                                 The Vector Database is a critical component for Retrieval Augmented Generation (RAG)
                                 applications, storing vector representations of data that can be efficiently queried
@@ -91,7 +91,7 @@ function VulnerabilityCard({ id, title, description, color, path }: Vulnerabilit
     return (
         <Link href={path} className="block group">
             <div
-                className="bg-[#1a1f2e] border-2 rounded-lg overflow-hidden transition-all hover:scale-[1.02] cursor-pointer h-full flex flex-col"
+                className="bg-[#f7f7f7] border-2 rounded-lg overflow-hidden transition-all hover:scale-[1.02] cursor-pointer h-full flex flex-col"
                 style={{ 
                     borderColor: `${color}33`,
                     boxShadow: `0 0 20px ${color}1a`
@@ -105,12 +105,12 @@ function VulnerabilityCard({ id, title, description, color, path }: Vulnerabilit
                         >
                             {id}
                         </div>
-                        <h3 className="text-lg font-semibold font-mono text-[#e8e9ed]">{title}</h3>
+                        <h3 className="text-lg font-semibold font-mono text-innoq-gray">{title}</h3>
                     </div>
-                    <p className="text-[#8892a6] text-sm line-clamp-3">{description}</p>
+                    <p className="text-innoq-gray-75 text-sm line-clamp-3">{description}</p>
                 </div>
-                <div className="px-6 py-3 bg-[#0a0e14] border-t flex justify-between items-center" style={{ borderColor: `${color}33` }}>
-                    <span className="text-sm font-mono text-[#8892a6]">Go to lab</span>
+                <div className="px-6 py-3 bg-white border-t flex justify-between items-center" style={{ borderColor: `${color}33` }}>
+                    <span className="text-sm font-mono text-innoq-gray-75">Go to lab</span>
                     <span className="text-sm font-mono group-hover:translate-x-1 transition-transform inline-block" style={{ color }}>→</span>
                 </div>
             </div>

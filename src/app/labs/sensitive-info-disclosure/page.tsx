@@ -149,7 +149,7 @@ export default function SensitiveInfoLab() {
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -166,10 +166,10 @@ export default function SensitiveInfoLab() {
                     <TerminalSection title="Understanding Sensitive Information Disclosure" accentColor={ACCENT_COLOR}>
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-mono font-medium text-[#00d9ff] mb-3">
+                                <h3 className="text-lg font-mono font-medium text-innoq-petrol mb-3">
                                     <span style={{ color: ACCENT_COLOR }}>&gt;</span> What is Sensitive Information Disclosure?
                                 </h3>
-                                <p className="text-[#8892a6] leading-relaxed">
+                                <p className="text-innoq-gray-75 leading-relaxed">
                                     This vulnerability occurs when LLMs expose sensitive data through their outputs, including personal information,
                                     proprietary algorithms, or confidential details. This can lead to unauthorized data access, privacy violations,
                                     and intellectual property breaches. The risk is particularly high in applications where LLMs process or have
@@ -178,9 +178,9 @@ export default function SensitiveInfoLab() {
                             </div>
 
                             <div className="grid md:grid-cols-2 gap-6">
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
                                     <h3 className="text-lg font-mono font-medium mb-3" style={{ color: ACCENT_COLOR }}>Types of Sensitive Data</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
                                             <span style={{ color: ACCENT_COLOR }} className="mt-1">▸</span>
                                             <span><span style={{ color: ACCENT_COLOR }}>Personal Information (PII):</span> Names, addresses, SSNs</span>
@@ -204,28 +204,28 @@ export default function SensitiveInfoLab() {
                                     </ul>
                                 </div>
 
-                                <div className="bg-[#0a0e14] p-4 rounded border" style={{ borderColor: '#ff006e1a' }}>
-                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff006e' }}>Common Vulnerabilities</h3>
-                                    <ul className="space-y-2 text-[#8892a6]">
+                                <div className="bg-white p-4 rounded border" style={{ borderColor: '#ff4d6733' }}>
+                                    <h3 className="text-lg font-mono font-medium mb-3" style={{ color: '#ff4d67' }}>Common Vulnerabilities</h3>
+                                    <ul className="space-y-2 text-innoq-gray-75">
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
-                                            <span><span style={{ color: '#ff006e' }}>PII Leakage:</span> Disclosure during model interactions</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
+                                            <span><span style={{ color: '#ff4d67' }}>PII Leakage:</span> Disclosure during model interactions</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
-                                            <span><span style={{ color: '#ff006e' }}>Algorithm Exposure:</span> Revealing model internals</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
+                                            <span><span style={{ color: '#ff4d67' }}>Algorithm Exposure:</span> Revealing model internals</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
-                                            <span><span style={{ color: '#ff006e' }}>Training Data Leaks:</span> Exposing sensitive training data</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
+                                            <span><span style={{ color: '#ff4d67' }}>Training Data Leaks:</span> Exposing sensitive training data</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
-                                            <span><span style={{ color: '#ff006e' }}>Business Data Disclosure:</span> Revealing confidential info</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
+                                            <span><span style={{ color: '#ff4d67' }}>Business Data Disclosure:</span> Revealing confidential info</span>
                                         </li>
                                         <li className="flex items-start gap-2">
-                                            <span style={{ color: '#ff006e' }} className="mt-1">✗</span>
-                                            <span><span style={{ color: '#ff006e' }}>Model Inversion:</span> Reconstructing private training data</span>
+                                            <span style={{ color: '#ff4d67' }} className="mt-1">✗</span>
+                                            <span><span style={{ color: '#ff4d67' }}>Model Inversion:</span> Reconstructing private training data</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -242,7 +242,7 @@ export default function SensitiveInfoLab() {
                                         key={num}
                                         onClick={() => requestHint(num)}
                                         disabled={usedHints.includes(num)}
-                                        className="px-4 py-2 bg-[#1a1f2e] hover:bg-[#ffbe0b]/20 rounded-lg font-mono transition-colors disabled:opacity-50 disabled:cursor-not-allowed border"
+                                        className="px-4 py-2 bg-[#f7f7f7] hover:bg-[#ffbe0b]/20 rounded-lg font-mono transition-colors disabled:opacity-50 disabled:cursor-not-allowed border"
                                         style={{ borderColor: '#ffbe0b33', color: '#ffbe0b' }}
                                     >
                                         Hint {num}
@@ -250,7 +250,7 @@ export default function SensitiveInfoLab() {
                                 ))}
                             </div>
                             {currentHint && (
-                                <div className="mt-4 p-4 bg-[#0a0e14] rounded-lg text-[#8892a6] font-mono text-sm border" style={{ borderColor: '#ffbe0b33' }}>
+                                <div className="mt-4 p-4 bg-white rounded-lg text-innoq-gray-75 font-mono text-sm border" style={{ borderColor: '#ffbe0b33' }}>
                                     <span style={{ color: '#ffbe0b' }}>&gt;</span> {currentHint}
                                 </div>
                             )}
@@ -265,45 +265,44 @@ export default function SensitiveInfoLab() {
                         <div className="space-y-6">
                             {model && (
                                 <div className="flex items-center justify-between border-b pb-4" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
-                                    <span className="text-xs font-mono text-[#8892a6]">
-                                        MODEL: <span className="text-[#00d9ff]">{model}</span>
+                                    <span className="text-xs font-mono text-innoq-gray-75">
+                                        MODEL: <span className="text-innoq-petrol">{model}</span>
                                     </span>
                                 </div>
                             )}
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label htmlFor="prompt" className="block text-sm font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>
-                                    <span className="text-[#8892a6]">&gt;</span> INPUT_PROMPT:
+                                    <span className="text-innoq-gray-75">&gt;</span> INPUT_PROMPT:
                                 </label>
                                 <textarea
                                     id="prompt"
                                     value={userInput}
                                     onChange={(e) => setUserInput(e.target.value)}
-                                    className="w-full h-32 px-4 py-3 bg-[#0a0e14] border-2 rounded-lg text-[#e8e9ed] font-mono text-sm focus:outline-none transition-all duration-300"
-                                    style={{ 
-                                        borderColor: `${ACCENT_COLOR}4d`,
-                                        boxShadow: `0 0 20px ${ACCENT_COLOR}33`
+                                    className="w-full h-32 px-4 py-3 bg-white border-2 rounded-lg text-innoq-gray font-mono text-sm focus:outline-none transition-all duration-300"
+                                    style={{
+                                        borderColor: `${ACCENT_COLOR}4d`
                                     }}
                                     placeholder="$ Try to extract sensitive information..."
                                 />
                             </div>
 
                             {error && (
-                                <div className="flex items-start gap-3 text-[#ff006e] bg-[#ff006e]/10 p-4 rounded-lg border border-[#ff006e]/30 animate-glitch">
+                                <div className="flex items-start gap-3 text-innoq-red bg-innoq-red/5 p-4 rounded-lg border border-innoq-red/30 animate-glitch">
                                     <AlertTriangle className="w-5 h-5 mt-0.5 animate-pulse" />
                                     <div className="font-mono text-sm">
                                         <p className="font-bold mb-1">[ERROR]</p>
-                                        <p className="text-[#8892a6]">{error}</p>
+                                        <p className="text-innoq-gray-75">{error}</p>
                                     </div>
                                 </div>
                             )}
 
                             {showWarning && (
-                                <div className="flex items-start gap-3 text-[#ffbe0b] bg-[#ffbe0b]/10 p-4 rounded-lg border border-[#ffbe0b]/30">
+                                <div className="flex items-start gap-3 text-innoq-apricot bg-innoq-apricot/5 p-4 rounded-lg border border-[#ffbe0b]/30">
                                     <AlertTriangle className="w-5 h-5 mt-0.5" />
                                     <div className="font-mono text-sm">
                                         <p className="font-bold mb-1">[WARNING] Potential Data Leak Detected</p>
-                                        <p className="text-[#8892a6]">
+                                        <p className="text-innoq-gray-75">
                                             This prompt appears to be attempting to extract sensitive information.
                                             In a production environment, this would trigger security alerts.
                                         </p>
@@ -314,10 +313,9 @@ export default function SensitiveInfoLab() {
                             <button
                                 type="submit"
                                 disabled={isLoading}
-                                className="w-full sm:w-auto px-6 py-3 text-[#0a0e14] rounded-lg font-mono font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
+                                className="w-full sm:w-auto px-6 py-3 text-white rounded-lg font-mono font-bold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
                                 style={{
-                                    backgroundColor: ACCENT_COLOR,
-                                    boxShadow: `0 0 20px ${ACCENT_COLOR}4d`
+                                    backgroundColor: ACCENT_COLOR
                                 }}
                             >
                                 {isLoading ? '[ PROCESSING... ]' : '[ SUBMIT PROMPT ]'}
@@ -325,11 +323,11 @@ export default function SensitiveInfoLab() {
                         </form>
 
                         {response && (
-                            <div className="mt-4 p-4 bg-[#0a0e14] rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                            <div className="mt-4 p-4 bg-white rounded-lg border" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                 <h3 className="text-sm font-medium font-mono mb-3" style={{ color: ACCENT_COLOR }}>
-                                    <span className="text-[#8892a6]">&gt;</span> OUTPUT:
+                                    <span className="text-innoq-gray-75">&gt;</span> OUTPUT:
                                 </h3>
-                                <p className="text-[#e8e9ed] whitespace-pre-wrap font-mono text-sm leading-relaxed">{response}</p>
+                                <p className="text-innoq-gray whitespace-pre-wrap font-mono text-sm leading-relaxed">{response}</p>
                             </div>
                         )}
 
@@ -337,13 +335,12 @@ export default function SensitiveInfoLab() {
                             <div className="flex items-start gap-3 p-4 rounded-lg border-2 animate-bounce-in" style={{ 
                                 color: ACCENT_COLOR,
                                 backgroundColor: `${ACCENT_COLOR}1a`,
-                                borderColor: `${ACCENT_COLOR}80`,
-                                boxShadow: `0 0 30px ${ACCENT_COLOR}4d`
+                                borderColor: `${ACCENT_COLOR}80`
                             }}>
                                 <ShieldCheck className="w-6 h-6 mt-0.5 animate-pulse-glow" />
                                 <div className="font-mono">
                                     <p className="font-bold text-lg mb-1">[SUCCESS] {success}</p>
-                                    <p className="text-sm text-[#8892a6]">
+                                    <p className="text-sm text-innoq-gray-75">
                                         Great job! You&apos;ve successfully extracted sensitive information from the model.
                                     </p>
                                 </div>
@@ -354,22 +351,22 @@ export default function SensitiveInfoLab() {
 
                     {/* Example Prompts */}
                     <div className="space-y-6">
-                        <h2 className="text-xl font-display text-[#00d9ff]">
-                            <span className="text-[#8892a6]">[</span> Example Information Disclosure Techniques <span className="text-[#8892a6]">]</span>
+                        <h2 className="text-xl font-display text-innoq-petrol">
+                            <span className="text-innoq-gray-75">[</span> Example Information Disclosure Techniques <span className="text-innoq-gray-75">]</span>
                         </h2>
                         <div className="grid gap-4 md:grid-cols-2">
                             {examplePrompts.map((example, index) => (
                                 <div
                                     key={index}
-                                    className="bg-[#1a1f2e] border p-5 rounded-lg cursor-pointer hover:shadow-[0_0_20px_rgba(0,217,255,0.2)] transition-all duration-300 group"
+                                    className="bg-[#f7f7f7] border p-5 rounded-lg cursor-pointer hover:shadow-sm transition-all duration-300 group"
                                     style={{ borderColor: `${ACCENT_COLOR}33` }}
                                     onClick={() => setUserInput(example.prompt)}
                                 >
-                                    <h3 className="font-mono font-bold mb-2 group-hover:text-[#00ff9f] transition-colors" style={{ color: ACCENT_COLOR }}>
-                                        <span className="text-[#8892a6]">&gt;</span> {example.title}
+                                    <h3 className="font-mono font-bold mb-2 group-hover:text-innoq-petrol transition-colors" style={{ color: ACCENT_COLOR }}>
+                                        <span className="text-innoq-gray-75">&gt;</span> {example.title}
                                     </h3>
-                                    <p className="text-sm text-[#8892a6] mb-3 leading-relaxed">{example.description}</p>
-                                    <pre className="text-xs font-mono bg-[#0a0e14] p-3 rounded overflow-x-auto border text-[#e8e9ed]" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
+                                    <p className="text-sm text-innoq-gray-75 mb-3 leading-relaxed">{example.description}</p>
+                                    <pre className="text-xs font-mono bg-white p-3 rounded overflow-x-auto border text-innoq-gray" style={{ borderColor: `${ACCENT_COLOR}1a` }}>
                                         {example.prompt}
                                     </pre>
                                 </div>
@@ -380,31 +377,31 @@ export default function SensitiveInfoLab() {
                     {/* Security Measures */}
                     <TerminalSection title="Prevention Strategies" accentColor={ACCENT_COLOR}>
                         <div className="flex items-center gap-3 mb-6">
-                            <Shield className="w-7 h-7 animate-pulse-glow" style={{ color: '#22c55e' }} />
+                            <Shield className="w-7 h-7 animate-pulse-glow" style={{ color: '#55cdaf' }} />
                         </div>
-                        <ul className="space-y-3 text-[#8892a6]">
+                        <ul className="space-y-3 text-innoq-gray-75">
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">Data sanitization and PII detection</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">Strict access controls and data boundaries</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">Training data filtering and privacy preservation</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">Output validation and sensitive data redaction</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">Regular security audits and penetration testing</span>
                             </li>
                             <li className="flex items-start gap-3">
-                                <span className="mt-1 font-mono" style={{ color: '#22c55e' }}>✓</span>
+                                <span className="mt-1 font-mono" style={{ color: '#55cdaf' }}>✓</span>
                                 <span className="leading-relaxed">User data handling policies and transparency</span>
                             </li>
                         </ul>

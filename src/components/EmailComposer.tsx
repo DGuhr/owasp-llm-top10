@@ -87,7 +87,7 @@ export function EmailComposer({ onEmailSent, userId }: EmailComposerProps) {
           <Mail className="w-6 h-6 text-orange-400 drop-shadow-[0_0_8px_rgba(251,146,60,0.5)]" />
           <div>
             <span className="font-bold text-orange-400">📧 Email Composer</span>
-            <div className="text-xs text-gray-500">Craft your email to victim@company.com</div>
+            <div className="text-xs text-innoq-gray-75">Craft your email to victim@company.com</div>
           </div>
         </div>
       </div>
@@ -96,38 +96,38 @@ export function EmailComposer({ onEmailSent, userId }: EmailComposerProps) {
       <form onSubmit={handleSendEmail} className="p-6 space-y-4">
         {/* From Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
             From:
           </label>
           <input
             type="email"
             value={from}
             onChange={(e) => setFrom(e.target.value)}
-            className="w-full bg-gray-900/80 border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+            className="w-full bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
             placeholder="your@email.com"
           />
         </div>
 
         {/* To Field (Fixed) */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
             To:
           </label>
-          <div className="w-full bg-gray-800/50 border-2 border-gray-700/50 rounded-lg px-4 py-2 text-gray-500">
+          <div className="w-full bg-white border-2 border-innoq-gray-25/50 rounded-lg px-4 py-2 text-innoq-gray-75">
             victim@company.com
           </div>
         </div>
 
         {/* Subject Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
             Subject:
           </label>
           <input
             type="text"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
-            className="w-full bg-gray-900/80 border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+            className="w-full bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
             placeholder="Enter email subject..."
             disabled={isSending}
           />
@@ -135,14 +135,14 @@ export function EmailComposer({ onEmailSent, userId }: EmailComposerProps) {
 
         {/* Body Field */}
         <div>
-          <label className="block text-sm font-medium text-gray-400 mb-2">
+          <label className="block text-sm font-medium text-innoq-gray-75 mb-2">
             Body:
           </label>
           <textarea
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={10}
-            className="w-full bg-gray-900/80 border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all resize-none"
+            className="w-full bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg px-4 py-2 text-white placeholder-orange-300/30 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all resize-none"
             placeholder="Write your email body here..."
             disabled={isSending}
           />
@@ -152,8 +152,8 @@ export function EmailComposer({ onEmailSent, userId }: EmailComposerProps) {
         {sentStatus && (
           <div className={`flex items-start gap-2 p-3 rounded-lg border ${
             sentStatus.success
-              ? 'bg-green-900/20 border-green-500/40 text-green-300'
-              : 'bg-red-900/20 border-red-500/40 text-red-300'
+              ? 'bg-innoq-green/10 border-innoq-green/40 text-innoq-green'
+              : 'bg-innoq-red/10 border-red-500/40 text-innoq-red'
           }`}>
             {sentStatus.success ? (
               <CheckCircle2 className="w-5 h-5 mt-0.5" />

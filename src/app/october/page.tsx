@@ -62,10 +62,10 @@ const levels: Level[] = [
 
 const getDifficultyColor = (difficulty: Level['difficulty']) => {
   switch (difficulty) {
-    case 'Easy': return 'text-green-400'
-    case 'Medium': return 'text-yellow-400'
+    case 'Easy': return 'text-innoq-green'
+    case 'Medium': return 'text-innoq-apricot'
     case 'Hard': return 'text-orange-400'
-    case 'Expert': return 'text-red-400'
+    case 'Expert': return 'text-innoq-red'
   }
 }
 
@@ -151,7 +151,7 @@ export default function OctoberChallengePage() {
   const unlockedLevels = getUnlockedLevels()
 
   return (
-    <main className="min-h-screen bg-[#1e293b] text-white">
+    <main className="min-h-screen bg-white text-white">
       {/* Hero Section with October Theme */}
       <div className="relative bg-gradient-to-b from-orange-950/40 via-orange-900/20 to-[#1e293b] border-b border-orange-500/30 overflow-hidden">
         {/* Animated Halloween Background Elements */}
@@ -167,7 +167,7 @@ export default function OctoberChallengePage() {
           <div className="flex items-center justify-between mb-8">
             <Link
               href="/"
-              className="inline-flex items-center text-gray-400 hover:text-cyan-400 transition-colors"
+              className="inline-flex items-center text-innoq-gray-75 hover:text-innoq-petrol transition-colors"
             >
               ← Back to Labs
             </Link>
@@ -175,12 +175,12 @@ export default function OctoberChallengePage() {
             {user && (
               <div className="flex items-center gap-4">
                 <div className="text-right">
-                  <div className="text-sm text-gray-400">Logged in as</div>
+                  <div className="text-sm text-innoq-gray-75">Logged in as</div>
                   <div className="font-semibold text-orange-400">{user.username}</div>
                 </div>
                 <button
                   onClick={logout}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg transition-colors"
                 >
                   <LogOut className="w-4 h-4" />
                   Logout
@@ -205,23 +205,23 @@ export default function OctoberChallengePage() {
             </span>
           </h1>
 
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl">
+          <p className="text-xl text-innoq-gray-75 mb-8 max-w-3xl">
             Master AI agent security through 5 progressive CTF challenges. Explore real-world vulnerabilities
             in MCP servers, tool-calling agents, and multi-stage attack chains.
           </p>
 
           {/* Theme */}
-          <div className="flex items-center gap-2 text-cyan-400 mb-8">
+          <div className="flex items-center gap-2 text-innoq-petrol mb-8">
             <span className="text-2xl font-semibold">Secure Our World</span>
-            <span className="text-gray-400">- One Agent at a Time</span>
+            <span className="text-innoq-gray-75">- One Agent at a Time</span>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-4">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Users className="w-5 h-5 text-cyan-400" />
-                <span className="text-sm text-gray-400">Active Challengers</span>
+                <Users className="w-5 h-5 text-innoq-petrol" />
+                <span className="text-sm text-innoq-gray-75">Active Challengers</span>
               </div>
               <div className="text-2xl font-bold text-white">
                 {statsLoading ? (
@@ -232,10 +232,10 @@ export default function OctoberChallengePage() {
               </div>
             </div>
 
-            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-4">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Trophy className="w-5 h-5 text-yellow-400" />
-                <span className="text-sm text-gray-400">Flags Captured</span>
+                <Trophy className="w-5 h-5 text-innoq-apricot" />
+                <span className="text-sm text-innoq-gray-75">Flags Captured</span>
               </div>
               <div className="text-2xl font-bold text-white">
                 {statsLoading ? (
@@ -246,10 +246,10 @@ export default function OctoberChallengePage() {
               </div>
             </div>
 
-            <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-4">
+            <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-4">
               <div className="flex items-center gap-2 mb-2">
                 <Clock className="w-5 h-5 text-orange-400" />
-                <span className="text-sm text-gray-400">Challenge Ends In</span>
+                <span className="text-sm text-innoq-gray-75">Challenge Ends In</span>
               </div>
               <div className="text-2xl font-bold text-white">{getDaysRemaining()} days</div>
             </div>
@@ -270,7 +270,7 @@ export default function OctoberChallengePage() {
                   <h3 className="text-xl font-bold text-orange-300 mb-1">
                     Register to Track Your Progress!
                   </h3>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-innoq-gray-75 text-sm">
                     Create an account to unlock all levels, compete on the leaderboard, and earn your certificate.
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export default function OctoberChallengePage() {
                 </Link>
                 <Link
                   href="/october/login"
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-medium rounded-lg transition-all whitespace-nowrap"
+                  className="flex items-center justify-center gap-2 px-6 py-3 bg-white hover:bg-[#f7f7f7] border border-innoq-gray-25 text-white font-medium rounded-lg transition-all whitespace-nowrap"
                 >
                   Login
                 </Link>
@@ -298,7 +298,7 @@ export default function OctoberChallengePage() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="mb-12">
           <h2 className="text-3xl font-bold mb-4">Challenge Levels</h2>
-          <p className="text-gray-400">
+          <p className="text-innoq-gray-75">
             Each level explores real vulnerabilities discovered in 2025. Complete challenges to unlock advanced levels.
           </p>
         </div>
@@ -314,22 +314,22 @@ export default function OctoberChallengePage() {
                 className={`bg-gradient-to-r from-gray-900 to-gray-900/95 border rounded-lg overflow-hidden transition-all ${
                   isUnlocked
                     ? 'border-orange-900/30 hover:border-orange-500/50 hover:shadow-lg hover:shadow-orange-500/20'
-                    : 'border-gray-800 opacity-60'
+                    : 'border-innoq-gray-25 opacity-60'
                 }`}
               >
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-4">
                       {isCompleted ? (
-                        <div className="w-12 h-12 rounded-full bg-green-900/30 border border-green-500/50 flex items-center justify-center">
-                          <CheckCircle2 className="w-6 h-6 text-green-400" />
+                        <div className="w-12 h-12 rounded-full bg-green-900/30 border border-innoq-green/50 flex items-center justify-center">
+                          <CheckCircle2 className="w-6 h-6 text-innoq-green" />
                         </div>
                       ) : isUnlocked ? (
                         <div className="w-12 h-12 rounded-full bg-cyan-900/30 border border-cyan-500/50 flex items-center justify-center">
-                          <Unlock className="w-6 h-6 text-cyan-400" />
+                          <Unlock className="w-6 h-6 text-innoq-petrol" />
                         </div>
                       ) : (
-                        <div className="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
                           <Lock className="w-6 h-6 text-gray-600" />
                         </div>
                       )}
@@ -343,12 +343,12 @@ export default function OctoberChallengePage() {
                             {level.difficulty}
                           </span>
                           {isCompleted && (
-                            <span className="px-2 py-1 bg-green-900/30 border border-green-500/50 text-green-400 text-xs font-medium rounded-full">
+                            <span className="px-2 py-1 bg-green-900/30 border border-innoq-green/50 text-innoq-green text-xs font-medium rounded-full">
                               ✓ Completed
                             </span>
                           )}
                         </div>
-                        <p className="text-gray-400">{level.description}</p>
+                        <p className="text-innoq-gray-75">{level.description}</p>
                       </div>
                     </div>
                   </div>
@@ -358,7 +358,7 @@ export default function OctoberChallengePage() {
                     {level.topics.map((topic) => (
                       <span
                         key={topic}
-                        className="px-3 py-1 bg-gray-800 text-sm text-gray-300 rounded-full"
+                        className="px-3 py-1 bg-white text-sm text-innoq-gray-75 rounded-full"
                       >
                         {topic}
                       </span>
@@ -374,7 +374,7 @@ export default function OctoberChallengePage() {
 
                   {/* Action Button */}
                   {!isUnlocked ? (
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-innoq-gray-50">
                       🔒 Complete Level {level.id - 1} to unlock
                     </div>
                   ) : (
@@ -394,20 +394,20 @@ export default function OctoberChallengePage() {
 
       {/* Leaderboard Preview */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-gray-900 border border-gray-800 rounded-lg p-8">
+        <div className="bg-[#f4f4f4] border border-innoq-gray-25 rounded-lg p-8">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold mb-2">Global Leaderboard</h2>
-              <p className="text-gray-400">Top performers updated in real-time</p>
+              <p className="text-innoq-gray-75">Top performers updated in real-time</p>
             </div>
-            <Trophy className="w-8 h-8 text-yellow-400" />
+            <Trophy className="w-8 h-8 text-innoq-apricot" />
           </div>
 
           <div className="space-y-3">
             {statsLoading ? (
               // Loading skeleton
               [1, 2, 3].map((i) => (
-                <div key={i} className="p-4 bg-gray-800/50 rounded-lg animate-pulse">
+                <div key={i} className="p-4 bg-white rounded-lg animate-pulse">
                   <div className="h-8 bg-gray-700 rounded"></div>
                 </div>
               ))
@@ -416,7 +416,7 @@ export default function OctoberChallengePage() {
               stats.top_3.map((entry) => (
                 <div
                   key={entry.rank}
-                  className="flex items-center justify-between p-4 bg-gray-800/50 rounded-lg"
+                  className="flex items-center justify-between p-4 bg-white rounded-lg"
                 >
                   <div className="flex items-center gap-4">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center font-bold ${
@@ -428,15 +428,15 @@ export default function OctoberChallengePage() {
                     </div>
                     <span className="font-medium text-white">@{entry.username}</span>
                   </div>
-                  <div className="flex items-center gap-6 text-sm text-gray-400">
+                  <div className="flex items-center gap-6 text-sm text-innoq-gray-75">
                     <span>{entry.levels_completed}/5 levels</span>
-                    <span className="text-cyan-400">{entry.score.toLocaleString()} pts</span>
+                    <span className="text-innoq-petrol">{entry.score.toLocaleString()} pts</span>
                   </div>
                 </div>
               ))
             ) : (
               // No data yet
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-8 text-innoq-gray-50">
                 <Trophy className="w-12 h-12 mx-auto mb-3 opacity-30" />
                 <p>Be the first to complete challenges and claim the top spot! 🎃</p>
               </div>
@@ -445,7 +445,7 @@ export default function OctoberChallengePage() {
 
           <Link
             href="/october/leaderboard"
-            className="mt-6 inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors"
+            className="mt-6 inline-flex items-center gap-2 text-innoq-petrol hover:text-cyan-300 transition-colors"
           >
             View Full Leaderboard →
           </Link>
@@ -468,7 +468,7 @@ export default function OctoberChallengePage() {
             <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-orange-400 to-yellow-400 bg-clip-text text-transparent">
               Earn Your October Certificate
             </h2>
-            <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+            <p className="text-innoq-gray-75 mb-6 max-w-2xl mx-auto">
               Complete all 5 levels during October 2025 to earn the exclusive <span className="text-orange-400 font-semibold">"AI Agent Security Professional - October 2025"</span> certificate.
               LinkedIn-ready with verification QR code and special October badge! 🎃
             </p>

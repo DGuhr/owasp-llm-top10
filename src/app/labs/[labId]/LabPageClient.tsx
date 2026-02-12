@@ -4,11 +4,11 @@ import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 
 // Loading component with display name
-const LoadingComponent = () => <div className="flex items-center justify-center min-h-screen bg-[#1e293b] text-white">Loading lab...</div>;
+const LoadingComponent = () => <div className="flex items-center justify-center min-h-screen bg-white text-innoq-gray">Loading lab...</div>;
 LoadingComponent.displayName = 'LoadingComponent';
 
 // Coming soon component with display name
-const ComingSoonComponent = () => <div className="min-h-screen bg-[#1e293b] text-white p-8"><div className="text-center">Lab coming soon...</div></div>;
+const ComingSoonComponent = () => <div className="min-h-screen bg-white text-innoq-gray p-8"><div className="text-center">Lab coming soon...</div></div>;
 ComingSoonComponent.displayName = 'ComingSoonComponent';
 
 // Dynamic imports for lab components
@@ -82,10 +82,10 @@ export function LabPageClient({ labData }: LabPageClientProps) {
 
     if (!Component) {
         return (
-            <div className="min-h-screen bg-[#1e293b] text-white p-8">
+            <div className="min-h-screen bg-white text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto text-center">
                     <h1 className="text-3xl font-bold mb-4">Lab Not Available</h1>
-                    <p className="text-gray-300">
+                    <p className="text-innoq-gray-75">
                         The {labData.title} lab is currently under development.
                     </p>
                 </div>
@@ -95,9 +95,9 @@ export function LabPageClient({ labData }: LabPageClientProps) {
 
     return (
         <Suspense fallback={
-            <div className="flex items-center justify-center min-h-screen bg-[#1e293b] text-white">
+            <div className="flex items-center justify-center min-h-screen bg-white text-innoq-gray">
                 <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyan-400 mx-auto mb-4"></div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-innoq-petrol mx-auto mb-4"></div>
                     <p>Loading {labData.title} lab...</p>
                 </div>
             </div>

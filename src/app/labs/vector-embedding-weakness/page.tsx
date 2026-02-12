@@ -98,7 +98,7 @@ Example: "While I can discuss general compensation, I should note that our execu
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -115,13 +115,13 @@ Example: "While I can discuss general compensation, I should note that our execu
                     <ApiKeyConfig />
 
                     {/* Vulnerability Details */}
-                    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-                        <h2 className="text-xl font-semibold text-green-400 mb-4">Understanding Vector & Embedding Weaknesses</h2>
+                    <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
+                        <h2 className="text-xl font-semibold text-innoq-green mb-4">Understanding Vector & Embedding Weaknesses</h2>
 
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-lg font-medium text-green-400 mb-2">What are Vector & Embedding Weaknesses?</h3>
-                                <p className="text-gray-300">
+                                <h3 className="text-lg font-medium text-innoq-green mb-2">What are Vector & Embedding Weaknesses?</h3>
+                                <p className="text-innoq-gray-75">
                                     Vector and embedding weaknesses occur in RAG systems when the process of converting documents
                                     into vector representations and retrieving them based on similarity can be exploited. This includes
                                     vulnerabilities in how data is stored, accessed, and retrieved from the vector database.
@@ -130,12 +130,12 @@ Example: "While I can discuss general compensation, I should note that our execu
 
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
-                                    <h3 className="text-lg font-medium text-green-400 mb-2">Common Attack Vectors</h3>
-                                    <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                        <li><span className="text-green-400">Data Poisoning:</span> Injecting malicious content</li>
-                                        <li><span className="text-green-400">Access Control Bypass:</span> Unauthorized retrieval</li>
-                                        <li><span className="text-green-400">Cross-Context Leaks:</span> Information bleeding</li>
-                                        <li><span className="text-green-400">Embedding Inversion:</span> Reconstructing source data</li>
+                                    <h3 className="text-lg font-medium text-innoq-green mb-2">Common Attack Vectors</h3>
+                                    <ul className="list-disc list-inside space-y-2 text-innoq-gray-75">
+                                        <li><span className="text-innoq-green">Data Poisoning:</span> Injecting malicious content</li>
+                                        <li><span className="text-innoq-green">Access Control Bypass:</span> Unauthorized retrieval</li>
+                                        <li><span className="text-innoq-green">Cross-Context Leaks:</span> Information bleeding</li>
+                                        <li><span className="text-innoq-green">Embedding Inversion:</span> Reconstructing source data</li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,18 +143,18 @@ Example: "While I can discuss general compensation, I should note that our execu
                     </div>
 
                     {/* Lab Instructions */}
-                    <div className="bg-gray-800 p-4 rounded-lg space-y-4">
+                    <div className="bg-white p-4 rounded-lg space-y-4">
                         <h3 className="text-lg font-semibold">Interactive RAG Security Lab</h3>
 
                         <div className="space-y-2">
-                            <h4 className="font-medium text-green-500">Understanding RAG Architecture</h4>
-                            <div className="bg-black/30 p-4 rounded-lg space-y-4">
+                            <h4 className="font-medium text-innoq-green">Understanding RAG Architecture</h4>
+                            <div className="bg-[#f7f7f7] p-4 rounded-lg space-y-4">
                                 <div className="flex items-start gap-4">
-                                    <Database className="w-6 h-6 text-green-400 mt-1" />
+                                    <Database className="w-6 h-6 text-innoq-green mt-1" />
                                     <div>
                                         <h5 className="font-medium">Vector Database</h5>
-                                        <p className="text-sm text-gray-300">Contains document embeddings with varying access levels:</p>
-                                        <ul className="list-disc pl-5 text-sm text-gray-300">
+                                        <p className="text-sm text-innoq-gray-75">Contains document embeddings with varying access levels:</p>
+                                        <ul className="list-disc pl-5 text-sm text-innoq-gray-75">
                                             <li>Public company documents</li>
                                             <li>Private employee records</li>
                                             <li>Confidential financial data</li>
@@ -163,11 +163,11 @@ Example: "While I can discuss general compensation, I should note that our execu
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <FileText className="w-6 h-6 text-green-400 mt-1" />
+                                    <FileText className="w-6 h-6 text-innoq-green mt-1" />
                                     <div>
                                         <h5 className="font-medium">Retrieval Process</h5>
-                                        <p className="text-sm text-gray-300">Documents are retrieved based on:</p>
-                                        <ul className="list-disc pl-5 text-sm text-gray-300">
+                                        <p className="text-sm text-innoq-gray-75">Documents are retrieved based on:</p>
+                                        <ul className="list-disc pl-5 text-sm text-innoq-gray-75">
                                             <li>Semantic similarity</li>
                                             <li>Access permissions</li>
                                             <li>Relevance scoring</li>
@@ -176,11 +176,11 @@ Example: "While I can discuss general compensation, I should note that our execu
                                 </div>
 
                                 <div className="flex items-start gap-4">
-                                    <AlertTriangle className="w-6 h-6 text-yellow-400 mt-1" />
+                                    <AlertTriangle className="w-6 h-6 text-innoq-apricot mt-1" />
                                     <div>
                                         <h5 className="font-medium">Security Risks</h5>
-                                        <p className="text-sm text-gray-300">Common vulnerabilities include:</p>
-                                        <ul className="list-disc pl-5 text-sm text-gray-300">
+                                        <p className="text-sm text-innoq-gray-75">Common vulnerabilities include:</p>
+                                        <ul className="list-disc pl-5 text-sm text-innoq-gray-75">
                                             <li>Data leakage through embeddings</li>
                                             <li>Cross-context information leaks</li>
                                             <li>Poisoned data in the vector store</li>
@@ -191,16 +191,16 @@ Example: "While I can discuss general compensation, I should note that our execu
                         </div>
 
                         <div className="space-y-2">
-                            <h4 className="font-medium text-green-500">Challenge Goal</h4>
-                            <div className="bg-black/30 p-4 rounded">
-                                <p className="text-sm text-gray-300">
+                            <h4 className="font-medium text-innoq-green">Challenge Goal</h4>
+                            <div className="bg-[#f7f7f7] p-4 rounded">
+                                <p className="text-sm text-innoq-gray-75">
                                     {mode === 'explore' ? (
                                         'Explore how documents are embedded and retrieved. Watch how documents are retrieved based on semantic similarity.'
                                     ) : (
                                         <>
-                                            <span className="text-green-400 font-medium">Mission:</span> Extract the CEO&apos;s salary from the system by exploiting RAG vulnerabilities.
+                                            <span className="text-innoq-green font-medium">Mission:</span> Extract the CEO&apos;s salary from the system by exploiting RAG vulnerabilities.
                                             <br /><br />
-                                            <span className="text-green-400 font-medium">Hint:</span> Try asking indirect questions about executive compensation or company leadership.
+                                            <span className="text-innoq-green font-medium">Hint:</span> Try asking indirect questions about executive compensation or company leadership.
                                         </>
                                     )}
                                 </p>
@@ -208,24 +208,24 @@ Example: "While I can discuss general compensation, I should note that our execu
                         </div>
 
                         <div className="space-y-2">
-                            <h4 className="font-medium text-green-500">Lab Modes</h4>
+                            <h4 className="font-medium text-innoq-green">Lab Modes</h4>
                             <div className="grid md:grid-cols-2 gap-4">
-                                <div className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${mode === 'explore' ? 'border-green-500 bg-green-500/10' : 'border-gray-700 hover:border-gray-600'
+                                <div className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${mode === 'explore' ? 'border-innoq-green bg-innoq-green/10' : 'border-innoq-gray-25 hover:border-innoq-gray-50'
                                     }`} onClick={() => setMode('explore')}>
                                     <h5 className="font-medium">Explore Mode</h5>
-                                    <p className="text-sm text-gray-300">Learn how RAG works by exploring document retrieval and embeddings</p>
+                                    <p className="text-sm text-innoq-gray-75">Learn how RAG works by exploring document retrieval and embeddings</p>
                                 </div>
 
-                                <div className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${mode === 'attack' ? 'border-green-500 bg-green-500/10' : 'border-gray-700 hover:border-gray-600'
+                                <div className={`p-4 rounded-lg border-2 cursor-pointer transition-colors ${mode === 'attack' ? 'border-innoq-green bg-innoq-green/10' : 'border-innoq-gray-25 hover:border-innoq-gray-50'
                                     }`} onClick={() => setMode('attack')}>
                                     <h5 className="font-medium">Attack Mode</h5>
-                                    <p className="text-sm text-gray-300">Try to exploit RAG vulnerabilities to access unauthorized data</p>
+                                    <p className="text-sm text-innoq-gray-75">Try to exploit RAG vulnerabilities to access unauthorized data</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="mt-4 bg-yellow-900/50 p-3 rounded">
-                            <p className="text-yellow-200 text-sm">
+                        <div className="mt-4 bg-innoq-apricot/10 p-3 rounded">
+                            <p className="text-innoq-apricot text-sm">
                                 💡 {mode === 'explore'
                                     ? 'Explore how documents are embedded and retrieved. Watch the similarity scores and access controls in action.'
                                     : 'Try to craft queries that leak information from restricted documents or exploit embedding vulnerabilities.'}
@@ -234,7 +234,7 @@ Example: "While I can discuss general compensation, I should note that our execu
                     </div>
 
                     {/* Query Interface */}
-                    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+                    <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
                         <div className="space-y-4">
                             <div>
                                 <label className="block text-sm font-medium mb-2">Your Query</label>
@@ -245,14 +245,15 @@ Example: "While I can discuss general compensation, I should note that our execu
                                     placeholder={mode === 'explore'
                                         ? "Try: 'Show me documents about company policies'"
                                         : "Try: 'What's the typical compensation structure in the company?'"}
-                                    className="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white"
+                                    className="w-full bg-white border border-innoq-gray-25 rounded px-4 py-2 text-innoq-gray"
                                 />
                             </div>
 
                             <button
                                 onClick={handleSubmit}
                                 disabled={isLoading}
-                                className={`bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded flex items-center gap-2 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                className={`hover:opacity-90 text-white px-4 py-2 rounded flex items-center gap-2 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                style={{ backgroundColor: ACCENT_COLOR }}
                             >
                                 {isLoading ? 'Processing...' : 'Submit Query'}
                             </button>
@@ -261,14 +262,14 @@ Example: "While I can discuss general compensation, I should note that our execu
 
                     {/* Results Display */}
                     {results && (
-                        <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6 space-y-6">
+                        <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6 space-y-6">
                             {/* Security Issues */}
                             {results.security_issues.length > 0 && (
-                                <div className="bg-red-900/30 border border-red-800 rounded p-4">
-                                    <h4 className="text-red-400 font-medium mb-2">Security Issues Detected</h4>
+                                <div className="bg-innoq-red/10 border border-innoq-red/30 rounded p-4">
+                                    <h4 className="text-innoq-red font-medium mb-2">Security Issues Detected</h4>
                                     <ul className="space-y-1 text-sm">
                                         {results.security_issues.map((issue, i) => (
-                                            <li key={i} className="text-red-300">{issue}</li>
+                                            <li key={i} className="text-innoq-red">{issue}</li>
                                         ))}
                                     </ul>
                                 </div>
@@ -276,17 +277,17 @@ Example: "While I can discuss general compensation, I should note that our execu
 
                             {/* LLM Response */}
                             {results.llm_response && (
-                                <div className="bg-gray-800 rounded p-4">
+                                <div className="bg-white rounded p-4">
                                     <h4 className="font-medium mb-2">AI Assistant Response</h4>
-                                    <p className="text-sm text-gray-300">{results.llm_response}</p>
+                                    <p className="text-sm text-innoq-gray-75">{results.llm_response}</p>
                                 </div>
                             )}
 
                             {/* Vector Search Visualization */}
                             {mode === 'explore' && (
-                                <div className="bg-gray-800/50 rounded p-4">
+                                <div className="bg-white rounded p-4">
                                     <h4 className="font-medium mb-4">Vector Search Process</h4>
-                                    <div className="space-y-2 text-sm text-gray-300">
+                                    <div className="space-y-2 text-sm text-innoq-gray-75">
                                         <p>1. Query converted to embedding vector</p>
                                         <p>2. Calculating similarity with document vectors</p>
                                         <p>3. Ranking results by similarity score</p>
@@ -302,20 +303,20 @@ Example: "While I can discuss general compensation, I should note that our execu
                                         <div
                                             key={doc.id}
                                             className={`p-4 rounded-lg border ${doc.metadata.access_level === 'confidential'
-                                                ? 'border-red-500 bg-red-500/10'
+                                                ? 'border-innoq-red bg-innoq-red/10'
                                                 : doc.metadata.access_level === 'private'
-                                                    ? 'border-yellow-500 bg-yellow-500/10'
-                                                    : 'border-green-500 bg-green-500/10'
+                                                    ? 'border-innoq-apricot bg-innoq-apricot/10'
+                                                    : 'border-innoq-green bg-innoq-green/10'
                                                 }`}
                                         >
                                             <div className="flex justify-between items-start mb-2">
                                                 <h5 className="font-medium">{doc.title}</h5>
-                                                <span className="text-sm px-2 py-1 rounded bg-gray-800">
+                                                <span className="text-sm px-2 py-1 rounded bg-white">
                                                     Score: {doc.similarity_score}
                                                 </span>
                                             </div>
-                                            <p className="text-sm text-gray-300 mb-2">{doc.content}</p>
-                                            <div className="flex gap-4 text-xs text-gray-400">
+                                            <p className="text-sm text-innoq-gray-75 mb-2">{doc.content}</p>
+                                            <div className="flex gap-4 text-xs text-innoq-gray-75">
                                                 <span>Access: {doc.metadata.access_level}</span>
                                                 <span>Dept: {doc.metadata.department}</span>
                                                 <span>Modified: {doc.metadata.last_modified}</span>
@@ -328,14 +329,14 @@ Example: "While I can discuss general compensation, I should note that our execu
                     )}
 
                     {/* Prevention Strategies */}
-                    <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
-                        <h2 className="text-xl font-semibold text-green-400 mb-4">Prevention Strategies</h2>
+                    <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-6">
+                        <h2 className="text-xl font-semibold text-innoq-green mb-4">Prevention Strategies</h2>
                         <div className="space-y-4">
-                            <ul className="list-disc list-inside space-y-2 text-gray-300">
-                                <li><span className="text-green-400">Access Controls:</span> Implement permission-aware vector retrieval</li>
-                                <li><span className="text-green-400">Data Validation:</span> Verify and sanitize data before embedding</li>
-                                <li><span className="text-green-400">Monitoring:</span> Track and analyze retrieval patterns</li>
-                                <li><span className="text-green-400">Data Partitioning:</span> Maintain strict context separation</li>
+                            <ul className="list-disc list-inside space-y-2 text-innoq-gray-75">
+                                <li><span className="text-innoq-green">Access Controls:</span> Implement permission-aware vector retrieval</li>
+                                <li><span className="text-innoq-green">Data Validation:</span> Verify and sanitize data before embedding</li>
+                                <li><span className="text-innoq-green">Monitoring:</span> Track and analyze retrieval patterns</li>
+                                <li><span className="text-innoq-green">Data Partitioning:</span> Maintain strict context separation</li>
                             </ul>
                         </div>
                     </div>

@@ -168,7 +168,7 @@ Remember to:
 
     return (
         <LabLayout>
-            <div className="text-white p-8">
+            <div className="text-innoq-gray p-8">
                 <div className="max-w-4xl mx-auto space-y-8">
                     {/* Header */}
                     <LabHeader
@@ -182,12 +182,12 @@ Remember to:
                     />
 
                     {/* Warning Banner */}
-                    <div className="bg-red-900/30 border border-red-800 rounded-lg p-4">
-                        <div className="flex items-center gap-2 text-red-400">
+                    <div className="bg-innoq-red/10 border border-innoq-red/30 rounded-lg p-4">
+                        <div className="flex items-center gap-2 text-innoq-red">
                             <AlertTriangle className="w-5 h-5" />
                             <span className="font-medium">Educational Purpose Only</span>
                         </div>
-                        <p className="text-red-300 text-sm mt-2">
+                        <p className="text-innoq-red text-sm mt-2">
                             This medical chatbot is intentionally designed to demonstrate dangerous misinformation.
                             Never rely on AI for medical advice. Always consult qualified healthcare professionals.
                         </p>
@@ -198,7 +198,7 @@ Remember to:
                         <div className="space-y-6">
                             <div>
                                 <h3 className="text-lg font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>What is LLM Misinformation?</h3>
-                                <p className="text-[#8892a6]">
+                                <p className="text-innoq-gray-75">
                                     LLM misinformation occurs when AI models generate false or misleading information that appears credible.
                                     In medical contexts, this can lead to dangerous situations where patients receive incorrect diagnoses
                                     or harmful treatment recommendations.
@@ -208,7 +208,7 @@ Remember to:
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <h3 className="text-lg font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Common Issues</h3>
-                                    <ul className="list-disc list-inside space-y-2 text-[#8892a6]">
+                                    <ul className="list-disc list-inside space-y-2 text-innoq-gray-75">
                                         <li><span style={{ color: ACCENT_COLOR }}>Hallucinations:</span> Made-up medical facts</li>
                                         <li><span style={{ color: ACCENT_COLOR }}>Overconfidence:</span> False certainty in diagnoses</li>
                                         <li><span style={{ color: ACCENT_COLOR }}>Outdated Info:</span> Old medical knowledge</li>
@@ -218,7 +218,7 @@ Remember to:
 
                                 <div>
                                     <h3 className="text-lg font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Real-World Impact</h3>
-                                    <ul className="list-disc list-inside space-y-2 text-[#8892a6]">
+                                    <ul className="list-disc list-inside space-y-2 text-innoq-gray-75">
                                         <li>Incorrect treatment plans</li>
                                         <li>Delayed proper medical care</li>
                                         <li>False sense of security</li>
@@ -240,19 +240,19 @@ Remember to:
                                 {exampleSymptoms.map((example, index) => (
                                     <div
                                         key={index}
-                                        className="bg-[#0a0e14] p-4 rounded-lg border cursor-pointer transition-all hover:shadow-lg"
-                                        style={{ borderColor: `${ACCENT_COLOR}33`, boxShadow: `0 0 20px ${ACCENT_COLOR}0a` }}
+                                        className="bg-white p-4 rounded-lg border cursor-pointer transition-all hover:shadow-lg"
+                                        style={{ borderColor: `${ACCENT_COLOR}33` }}
                                         onClick={() => setUserInput(example.symptoms)}
                                     >
                                         <h4 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>{example.title}</h4>
-                                        <p className="text-sm text-[#8892a6] mb-2 break-words">{example.description}</p>
-                                        <p className="text-xs text-[#8892a6] break-words">{example.symptoms}</p>
+                                        <p className="text-sm text-innoq-gray-75 mb-2 break-words">{example.description}</p>
+                                        <p className="text-xs text-innoq-gray-75 break-words">{example.symptoms}</p>
                                     </div>
                                 ))}
                             </div>
 
                             {/* Chat Messages */}
-                            <div className="bg-[#0a0e14] rounded-lg border p-4 min-h-[300px] max-h-[500px] overflow-y-auto space-y-4" style={{ borderColor: `${ACCENT_COLOR}33` }}>
+                            <div className="bg-white rounded-lg border p-4 min-h-[300px] max-h-[500px] overflow-y-auto space-y-4" style={{ borderColor: `${ACCENT_COLOR}33` }}>
                                 {messages.map((message, index) => (
                                     <div
                                         key={index}
@@ -261,7 +261,7 @@ Remember to:
                                         <div
                                             className={`max-w-[80%] rounded-lg p-4 ${message.role === 'user'
                                                 ? 'border'
-                                                : 'bg-[#1a1f2e] border border-gray-700'
+                                                : 'bg-[#f7f7f7] border border-innoq-gray-25'
                                                 }`}
                                             style={message.role === 'user' ? { backgroundColor: `${ACCENT_COLOR}20`, borderColor: ACCENT_COLOR } : {}}
                                         >
@@ -274,19 +274,19 @@ Remember to:
                                                         </span>
                                                     </div>
                                                     {message.isHallucination && (
-                                                        <div className="bg-red-900/50 text-red-300 p-2 rounded text-sm mt-2 flex items-center gap-2">
+                                                        <div className="bg-innoq-red/10 text-innoq-red p-2 rounded text-sm mt-2 flex items-center gap-2">
                                                             <AlertTriangle className="w-4 h-4" />
                                                             Potential hallucination detected! This diagnosis contains questionable information.
                                                         </div>
                                                     )}
                                                     {message.diagnosis.warning && (
-                                                        <div className="bg-yellow-900/30 text-yellow-300 p-2 rounded text-sm mt-2">
+                                                        <div className="bg-innoq-apricot/10 text-innoq-apricot p-2 rounded text-sm mt-2">
                                                             ⚠️ {message.diagnosis.warning}
                                                         </div>
                                                     )}
                                                 </div>
                                             )}
-                                            <div className="space-y-2 text-[#8892a6]">
+                                            <div className="space-y-2 text-innoq-gray-75">
                                                 {message.role === 'assistant' ? (
                                                     <>
                                                         {/* Format the response to highlight treatment suggestions */}
@@ -314,7 +314,7 @@ Remember to:
                                     </div>
                                 ))}
                                 {messages.length === 0 && (
-                                    <div className="text-center text-[#8892a6] py-8 font-mono">
+                                    <div className="text-center text-innoq-gray-75 py-8 font-mono">
                                         Start by describing your symptoms to the medical chatbot
                                     </div>
                                 )}
@@ -327,7 +327,7 @@ Remember to:
                                         value={userInput}
                                         onChange={(e) => setUserInput(e.target.value)}
                                         placeholder="Describe your symptoms..."
-                                        className="w-full h-32 px-4 py-2 bg-[#0a0e14] border rounded-lg text-white font-mono focus:outline-none transition-all"
+                                        className="w-full h-32 px-4 py-2 bg-white border rounded-lg text-innoq-gray font-mono focus:outline-none transition-all"
                                         style={{ borderColor: `${ACCENT_COLOR}33` }}
                                         onFocus={(e) => e.target.style.borderColor = ACCENT_COLOR}
                                         onBlur={(e) => e.target.style.borderColor = `${ACCENT_COLOR}33`}
@@ -335,7 +335,7 @@ Remember to:
                                 </div>
 
                                 {error && (
-                                    <div className="flex items-start gap-2 text-red-400 bg-red-900/20 p-4 rounded-lg border border-red-800">
+                                    <div className="flex items-start gap-2 text-innoq-red bg-innoq-red/10 p-4 rounded-lg border border-innoq-red/30">
                                         <AlertTriangle className="w-5 h-5 mt-0.5" />
                                         <p>{error}</p>
                                     </div>
@@ -360,13 +360,13 @@ Remember to:
 
                         {/* Updated Hallucination Counter to be more prominent */}
                         {hallucinationCount > 0 && (
-                            <div className="bg-red-900/20 border border-red-800 rounded-lg p-4 mt-6">
-                                <h4 className="text-red-400 font-medium font-mono mb-2">Misinformation Alert</h4>
-                                <p className="text-sm text-red-300">
+                            <div className="bg-innoq-red/10 border border-innoq-red/30 rounded-lg p-4 mt-6">
+                                <h4 className="text-innoq-red font-medium font-mono mb-2">Misinformation Alert</h4>
+                                <p className="text-sm text-innoq-red">
                                     Detected {hallucinationCount} instance{hallucinationCount !== 1 ? 's' : ''} of dangerous
                                     medical misinformation. In a real scenario, this could lead to:
                                 </p>
-                                <ul className="list-disc list-inside text-sm text-red-300 mt-2">
+                                <ul className="list-disc list-inside text-sm text-innoq-red mt-2">
                                     <li>Taking harmful or inappropriate medications</li>
                                     <li>Delaying critical medical treatment</li>
                                     <li>Following dangerous home remedies</li>
@@ -384,7 +384,7 @@ Remember to:
                         <div className="grid md:grid-cols-2 gap-6">
                             <div>
                                 <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Technical Controls</h3>
-                                <ul className="list-disc list-inside space-y-1 text-[#8892a6] text-sm">
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Implement fact-checking mechanisms</li>
                                     <li>Use verified medical knowledge bases</li>
                                     <li>Monitor confidence scores</li>
@@ -393,7 +393,7 @@ Remember to:
                             </div>
                             <div>
                                 <h3 className="font-medium font-mono mb-2" style={{ color: ACCENT_COLOR }}>Process Controls</h3>
-                                <ul className="list-disc list-inside space-y-1 text-[#8892a6] text-sm">
+                                <ul className="list-disc list-inside space-y-1 text-innoq-gray-75 text-sm">
                                     <li>Human medical review</li>
                                     <li>Clear disclaimer systems</li>
                                     <li>Emergency escalation paths</li>

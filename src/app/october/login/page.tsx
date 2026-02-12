@@ -55,7 +55,7 @@ export default function OctoberLoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#1e293b] text-white flex items-center justify-center p-4">
+    <main className="min-h-screen bg-white text-white flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
@@ -66,27 +66,27 @@ export default function OctoberLoginPage() {
           <h1 className="text-3xl font-bold mb-2 bg-gradient-to-r from-orange-400 to-cyan-400 bg-clip-text text-transparent">
             Welcome Back!
           </h1>
-          <p className="text-gray-400">
+          <p className="text-innoq-gray-75">
             Login to continue your October CTF challenge
           </p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-gray-900 border border-gray-800 rounded-lg p-8 shadow-lg">
+        <div className="bg-[#f7f7f7] border border-innoq-gray-25 rounded-lg p-8 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Username Field */}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="username" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                 Username
               </label>
               <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-innoq-gray-75" />
                 <input
                   type="text"
                   id="username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  className="w-full pl-10 pr-4 py-3 bg-white border border-innoq-gray-25 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                   placeholder="Enter your username"
                   required
                   autoComplete="username"
@@ -96,7 +96,7 @@ export default function OctoberLoginPage() {
 
             {/* Error Message */}
             {error && (
-              <div className="bg-red-900/30 border border-red-500/50 text-red-400 px-4 py-3 rounded-lg text-sm">
+              <div className="bg-innoq-red/10 border border-red-500/50 text-innoq-red px-4 py-3 rounded-lg text-sm">
                 {error}
               </div>
             )}
@@ -123,7 +123,7 @@ export default function OctoberLoginPage() {
 
           {/* Register Link */}
           <div className="mt-6 text-center">
-            <p className="text-gray-400 text-sm">
+            <p className="text-innoq-gray-75 text-sm">
               Don't have an account?{' '}
               <Link
                 href="/october/register"
@@ -138,7 +138,7 @@ export default function OctoberLoginPage() {
           <div className="mt-4 text-center">
             <Link
               href="/october"
-              className="text-gray-500 hover:text-gray-400 text-sm transition-colors"
+              className="text-innoq-gray-75 hover:text-innoq-gray-75 text-sm transition-colors"
             >
               ← Back to Challenge
             </Link>
@@ -147,7 +147,7 @@ export default function OctoberLoginPage() {
 
         {/* Info Box */}
         <div className="mt-6 bg-orange-900/20 border border-orange-500/30 rounded-lg p-4 text-center">
-          <p className="text-sm text-gray-300">
+          <p className="text-sm text-innoq-gray-75">
             <span className="text-orange-400 font-medium">New to October CTF?</span>
             <br />
             You can try Level 1 without registering, or register to track your progress!

@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Analytics } from '@vercel/analytics/react';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -140,12 +137,12 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#1e293b" />
-        <meta name="msapplication-TileColor" content="#1e293b" />
+        <meta name="theme-color" content="#004153" />
+        <meta name="msapplication-TileColor" content="#004153" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head>
-      <body className={inter.className}>
-        <main className="min-h-screen bg-gray-50">
+      <body className="font-serif">
+        <main className="min-h-screen bg-white">
           {children}
         </main>
         <Footer />

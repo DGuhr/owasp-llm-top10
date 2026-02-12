@@ -81,7 +81,7 @@ export default function OctoberRegisterPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#1e293b] text-white">
+    <main className="min-h-screen bg-white text-white">
       {/* Hero Section with October Theme */}
       <div className="relative bg-gradient-to-b from-orange-950/40 via-orange-900/20 to-[#1e293b] border-b border-orange-500/30 overflow-hidden">
         {/* Animated Halloween Background Elements */}
@@ -96,7 +96,7 @@ export default function OctoberRegisterPage() {
           {/* Back Link */}
           <Link
             href="/october"
-            className="inline-flex items-center text-gray-400 hover:text-cyan-400 mb-8 transition-colors"
+            className="inline-flex items-center text-innoq-gray-75 hover:text-cyan-400 mb-8 transition-colors"
           >
             ← Back to Challenge
           </Link>
@@ -116,7 +116,7 @@ export default function OctoberRegisterPage() {
             </span>
           </h1>
 
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-innoq-gray-75 mb-8">
             Create your account to track progress, compete on the leaderboard, and earn your October certificate.
           </p>
         </div>
@@ -130,24 +130,24 @@ export default function OctoberRegisterPage() {
               <Trophy className="w-8 h-8 text-orange-400" />
             </div>
             <h2 className="text-2xl font-bold mb-2">Create Your Profile</h2>
-            <p className="text-gray-400">Join 1,234 challengers competing this October</p>
+            <p className="text-innoq-gray-75">Join 1,234 challengers competing this October</p>
           </div>
 
           {error && (
-            <div className="mb-6 bg-red-900/20 border border-red-500/50 rounded-lg p-4">
-              <p className="text-red-400 text-sm">{error}</p>
+            <div className="mb-6 bg-innoq-red/10 border border-red-500/50 rounded-lg p-4">
+              <p className="text-innoq-red text-sm">{error}</p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Username */}
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="username" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                 Username *
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="w-5 h-5 text-gray-500" />
+                  <User className="w-5 h-5 text-innoq-gray-75" />
                 </div>
                 <input
                   type="text"
@@ -160,20 +160,20 @@ export default function OctoberRegisterPage() {
                   maxLength={30}
                   pattern="[a-zA-Z0-9_]+"
                   placeholder="agent_hunter"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-900/80 border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">Letters, numbers, and underscores only</p>
+              <p className="mt-1 text-xs text-innoq-gray-75">Letters, numbers, and underscores only</p>
             </div>
 
             {/* Display Name */}
             <div>
-              <label htmlFor="displayName" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="displayName" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                 Display Name (Optional)
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="w-5 h-5 text-gray-500" />
+                  <User className="w-5 h-5 text-innoq-gray-75" />
                 </div>
                 <input
                   type="text"
@@ -183,20 +183,20 @@ export default function OctoberRegisterPage() {
                   onChange={handleInputChange}
                   maxLength={50}
                   placeholder="Your Name"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-900/80 border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">Shown on leaderboard (defaults to username)</p>
+              <p className="mt-1 text-xs text-innoq-gray-75">Shown on leaderboard (defaults to username)</p>
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-innoq-gray-75 mb-2">
                 Email (Optional)
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="w-5 h-5 text-gray-500" />
+                  <Mail className="w-5 h-5 text-innoq-gray-75" />
                 </div>
                 <input
                   type="email"
@@ -205,10 +205,10 @@ export default function OctoberRegisterPage() {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="your@email.com"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-900/80 border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
+                  className="w-full pl-10 pr-4 py-3 bg-[#f7f7f7] border-2 border-orange-900/40 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500/60 focus:shadow-[0_0_15px_rgba(251,146,60,0.2)] transition-all"
                 />
               </div>
-              <p className="mt-1 text-xs text-gray-500">For certificate delivery and updates</p>
+              <p className="mt-1 text-xs text-innoq-gray-75">For certificate delivery and updates</p>
             </div>
 
             {/* Submit Button */}
@@ -231,8 +231,8 @@ export default function OctoberRegisterPage() {
           </form>
 
           {/* Features */}
-          <div className="mt-8 pt-8 border-t border-gray-800">
-            <p className="text-sm text-gray-400 mb-4 text-center">What you get:</p>
+          <div className="mt-8 pt-8 border-t border-innoq-gray-25">
+            <p className="text-sm text-innoq-gray-75 mb-4 text-center">What you get:</p>
             <div className="space-y-3">
               {[
                 '📊 Track your progress across all levels',
@@ -240,7 +240,7 @@ export default function OctoberRegisterPage() {
                 '🎓 Earn October certificate upon completion',
                 '⏱️ View your time and hint statistics'
               ].map((feature) => (
-                <div key={feature} className="flex items-center gap-3 text-sm text-gray-300">
+                <div key={feature} className="flex items-center gap-3 text-sm text-innoq-gray-75">
                   <div className="w-1.5 h-1.5 bg-orange-400 rounded-full"></div>
                   <span>{feature}</span>
                 </div>

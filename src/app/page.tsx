@@ -1,5 +1,4 @@
 import { ThreatModelDiagram } from '@/components/ThreatModelDiagram'
-import { OctoberCTFBanner } from '@/components/OctoberCTFBanner'
 import Image from 'next/image'
 import type { Metadata } from "next";
 
@@ -82,15 +81,14 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <OctoberCTFBanner />
-      <main className="min-h-screen bg-[#0a0e14] text-white p-8 relative bg-noise scanline-effect vignette">
+      <main className="min-h-screen bg-white text-innoq-gray p-8 relative">
         {/* GitHub Link - Top Right Corner (Desktop only) */}
         <div className="absolute top-4 right-4 hidden md:block z-50">
           <a
             href="https://github.com/TomAbai/llm-sec"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full bg-transparent hover:bg-[#1a1f2e] transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,159,0.3)]"
+            className="p-2 rounded-full bg-transparent hover:bg-[#f7f7f7] transition-all duration-300"
             aria-label="View LLM Security Labs source code on GitHub"
           >
             <Image
@@ -98,7 +96,7 @@ export default function Home() {
               alt="GitHub repository for LLM Security Labs"
               width={140}
               height={140}
-              className="invert brightness-0 invert hover:opacity-80 transition-opacity"
+              className="hover:opacity-80 transition-opacity"
             />
           </a>
         </div>
@@ -108,17 +106,17 @@ export default function Home() {
           <header className="text-center space-y-8 mb-16 animate-fade-in">
             {/* Terminal Frame */}
             <div className="inline-block">
-              <div className="font-mono text-[#00ff9f] text-sm mb-4 text-left">
+              <div className="font-mono text-innoq-petrol text-sm mb-4 text-left">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-3 h-3 rounded-full bg-[#ff006e]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#ffbe0b]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#00ff9f]"></div>
-                  <span className="ml-2 text-[#8892a6]">system@llm-sec:~$</span>
+                  <div className="w-3 h-3 rounded-full bg-innoq-red"></div>
+                  <div className="w-3 h-3 rounded-full bg-innoq-apricot"></div>
+                  <div className="w-3 h-3 rounded-full bg-innoq-green"></div>
+                  <span className="ml-2 text-innoq-gray-75">system@llm-sec:~$</span>
                 </div>
               </div>
 
               {/* ASCII Art Title */}
-              <div className="font-mono text-xs md:text-sm lg:text-base leading-tight text-[#00ff9f] mb-6 whitespace-pre overflow-x-auto">
+              <div className="font-mono text-xs md:text-sm lg:text-base leading-tight text-innoq-petrol mb-6 whitespace-pre overflow-x-auto">
 {`╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
 ║   ██╗     ██╗     ███╗   ███╗    ███████╗███████╗ ██████╗   ║
@@ -134,28 +132,28 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="font-display text-2xl md:text-3xl text-[#e8e9ed] tracking-tight max-w-4xl mx-auto">
-              <span className="text-[#8892a6]">&gt;</span>{' '}
-              <span className="text-gradient-mint">Exploit.</span>{' '}
-              <span className="text-gradient-magenta">Learn.</span>{' '}
-              <span className="text-[#ffbe0b]">Defend.</span>
+            <div className="font-display text-2xl md:text-3xl text-innoq-gray tracking-tight max-w-4xl mx-auto">
+              <span className="text-innoq-gray-75">&gt;</span>{' '}
+              <span className="text-gradient-petrol">Exploit.</span>{' '}
+              <span className="text-gradient-apricot">Learn.</span>{' '}
+              <span className="text-innoq-apricot">Defend.</span>
             </div>
 
-            <p className="text-base md:text-lg text-[#8892a6] max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-innoq-gray-75 max-w-3xl mx-auto leading-relaxed">
               A hands-on learning platform for understanding LLM security vulnerabilities.
               Explore interactive labs, experiment with real-world attack vectors,
               and learn defensive techniques through practical experience.
             </p>
 
             {/* System Status */}
-            <div className="inline-flex items-center gap-3 font-mono text-xs text-[#8892a6] bg-[#1a1f2e] px-4 py-2 rounded border border-[#00ff9f]/20">
+            <div className="inline-flex items-center gap-3 font-mono text-xs text-innoq-gray-75 bg-[#f7f7f7] px-4 py-2 rounded border border-innoq-petrol/20">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#00ff9f] animate-pulse-glow"></div>
+                <div className="w-2 h-2 rounded-full bg-innoq-green animate-pulse-glow"></div>
                 <span>SYSTEM ONLINE</span>
               </div>
-              <span className="text-[#4a5568]">|</span>
+              <span className="text-innoq-gray-50">|</span>
               <span>10 LABS ACTIVE</span>
-              <span className="text-[#4a5568]">|</span>
+              <span className="text-innoq-gray-50">|</span>
               <span>OWASP 2025</span>
             </div>
           </header>
@@ -167,10 +165,10 @@ export default function Home() {
           </section>
 
           {/* Explanation Section */}
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#8892a6]" aria-labelledby="about-heading">
-            <div className="space-y-4 bg-[#1a1f2e] p-6 rounded-lg border border-[#00ff9f]/10 hover:border-[#00ff9f]/30 transition-all duration-300">
-              <h2 id="about-heading" className="text-2xl font-display text-[#00ff9f]">
-                <span className="text-[#8892a6]">[</span> ABOUT <span className="text-[#8892a6]">]</span>
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-8 text-innoq-gray-75" aria-labelledby="about-heading">
+            <div className="space-y-4 bg-[#f7f7f7] p-6 rounded-lg border border-innoq-petrol/10 hover:border-innoq-petrol/30 transition-all duration-300">
+              <h2 id="about-heading" className="text-2xl font-display text-innoq-petrol">
+                <span className="text-innoq-gray-75">[</span> ABOUT <span className="text-innoq-gray-75">]</span>
               </h2>
               <p className="leading-relaxed">
                 This interactive platform combines visual learning with hands-on experimentation. The diagram illustrates how
@@ -178,33 +176,33 @@ export default function Home() {
                 interactive labs let you safely test and understand these vulnerabilities firsthand.
               </p>
               <p className="leading-relaxed">
-                Each numbered box <span className="font-mono text-[#00ff9f]">(LLM01-LLM10)</span> represents one of the OWASP Top 10 LLM vulnerabilities, with its own dedicated
+                Each numbered box <span className="font-mono text-innoq-petrol">(LLM01-LLM10)</span> represents one of the OWASP Top 10 LLM vulnerabilities, with its own dedicated
                 lab environment where you can experiment with attacks and learn about mitigation strategies through practical exercises.
               </p>
             </div>
-            <div className="space-y-4 bg-[#1a1f2e] p-6 rounded-lg border border-[#ff006e]/10 hover:border-[#ff006e]/30 transition-all duration-300">
-              <h2 className="text-2xl font-display text-[#ff006e]">
-                <span className="text-[#8892a6]">[</span> USAGE <span className="text-[#8892a6]">]</span>
+            <div className="space-y-4 bg-[#f7f7f7] p-6 rounded-lg border border-innoq-apricot/10 hover:border-innoq-apricot/30 transition-all duration-300">
+              <h2 className="text-2xl font-display text-innoq-apricot">
+                <span className="text-innoq-gray-75">[</span> USAGE <span className="text-innoq-gray-75">]</span>
               </h2>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00ff9f] font-mono mt-1">&gt;</span>
+                  <span className="text-innoq-petrol font-mono mt-1">&gt;</span>
                   <span className="leading-relaxed">Hover over components to highlight their connections</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00ff9f] font-mono mt-1">&gt;</span>
+                  <span className="text-innoq-petrol font-mono mt-1">&gt;</span>
                   <span className="leading-relaxed">Hover over vulnerabilities to see detailed descriptions</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00ff9f] font-mono mt-1">&gt;</span>
+                  <span className="text-innoq-petrol font-mono mt-1">&gt;</span>
                   <span className="leading-relaxed">Click on any vulnerability to access its interactive lab</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00ff9f] font-mono mt-1">&gt;</span>
+                  <span className="text-innoq-petrol font-mono mt-1">&gt;</span>
                   <span className="leading-relaxed">Experiment with different attack scenarios in a safe environment</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#00ff9f] font-mono mt-1">&gt;</span>
+                  <span className="text-innoq-petrol font-mono mt-1">&gt;</span>
                   <span className="leading-relaxed">Learn mitigation strategies through hands-on exercises</span>
                 </li>
               </ul>
@@ -212,16 +210,16 @@ export default function Home() {
           </section>
 
           {/* Open Source Section */}
-          <section className="bg-[#1a1f2e] rounded-lg p-8 text-center my-12 border border-[#ffbe0b]/20" aria-labelledby="open-source-heading">
+          <section className="bg-[#f7f7f7] rounded-lg p-8 text-center my-12 border border-innoq-apricot/20" aria-labelledby="open-source-heading">
             <div className="max-w-3xl mx-auto space-y-4">
-              <h2 id="open-source-heading" className="text-2xl font-display text-[#ffbe0b]">
-                <span className="text-[#8892a6]">[</span> OPEN SOURCE <span className="text-[#8892a6]">]</span>
+              <h2 id="open-source-heading" className="text-2xl font-display text-innoq-apricot">
+                <span className="text-innoq-gray-75">[</span> OPEN SOURCE <span className="text-innoq-gray-75">]</span>
               </h2>
-              <p className="text-[#8892a6] leading-relaxed">
+              <p className="text-innoq-gray-75 leading-relaxed">
                 This is an open source project. I believe in the power of community collaboration to improve LLM security education.
                 Your contributions, feedback, and ideas are welcome to help make this platform more comprehensive and effective.
               </p>
-              <div className="font-mono text-sm text-[#8892a6] pt-2">
+              <div className="font-mono text-sm text-innoq-gray-75 pt-2">
                 
               </div>
             </div>
@@ -233,7 +231,7 @@ export default function Home() {
               href="https://github.com/TomAbai/llm-sec"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1a1f2e] hover:bg-[#242b3d] rounded-lg px-6 py-3 transition-all duration-300 border border-[#00ff9f]/20"
+              className="inline-flex items-center gap-2 bg-[#f7f7f7] hover:bg-[#f4f4f4] rounded-lg px-6 py-3 transition-all duration-300 border border-innoq-petrol/20"
               aria-label="View LLM Security Labs source code on GitHub"
             >
               <Image
@@ -241,22 +239,22 @@ export default function Home() {
                 alt="GitHub repository for LLM Security Labs"
                 width={70}
                 height={70}
-                className="invert brightness-0 invert"
+                className=""
               />
             </a>
           </div>
 
           {/* Version Info */}
-          <footer className="text-center text-sm text-[#8892a6] mt-8 font-mono border-t border-[#1a1f2e] pt-8">
+          <footer className="text-center text-sm text-innoq-gray-75 mt-8 font-mono border-t border-innoq-gray-25 pt-8">
             <p className="mb-3">
-              <span className="text-[#00ff9f]">[</span> OWASP Top 10 for LLM Applications 2025 <span className="text-[#00ff9f]">]</span>
+              <span className="text-innoq-petrol">[</span> OWASP Top 10 for LLM Applications 2025 <span className="text-innoq-petrol">]</span>
             </p>
             <p className="mt-2">
               <a
                 href="https://owasp.org/www-project-top-10-for-large-language-model-applications/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#00ff9f] hover:text-[#00d9ff] transition-colors underline decoration-dotted"
+                className="text-innoq-petrol hover:text-innoq-blue transition-colors underline decoration-dotted"
               >
                 Learn more at OWASP.org
               </a>

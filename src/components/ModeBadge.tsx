@@ -52,23 +52,23 @@ export function ModeBadge() {
 
   const badgeConfig = {
     api: {
-      bg: 'bg-yellow-500/20',
-      border: 'border-yellow-500/50',
-      text: 'text-yellow-300',
+      bg: 'bg-innoq-apricot/15',
+      border: 'border-innoq-apricot/40',
+      text: 'text-innoq-petrol',
       icon: Zap,
       label: 'API Mode',
     },
     local: {
-      bg: 'bg-cyan-500/20',
-      border: 'border-cyan-500/50',
-      text: 'text-cyan-300',
+      bg: 'bg-innoq-petrol/10',
+      border: 'border-innoq-petrol/40',
+      text: 'text-innoq-petrol',
       icon: Cpu,
       label: `Local: ${modelName}`,
     },
     ollama: {
-      bg: 'bg-green-500/20',
-      border: 'border-green-500/50',
-      text: 'text-green-300',
+      bg: 'bg-innoq-green/15',
+      border: 'border-innoq-green/40',
+      text: 'text-innoq-petrol',
       icon: Server,
       label: `Ollama: ${modelName}`,
     },
