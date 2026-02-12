@@ -7,6 +7,7 @@ import { getWebLLMEngine } from './web-llm-engine'
 class LLMService {
   private provider: LLMProvider = 'api'
   private apiKey: string | null = null
+  private ollamaModel: string | null = null
 
   constructor() {
     // Initialize from localStorage if in browser
@@ -17,13 +18,18 @@ class LLMService {
 
   private loadConfig() {
     const storedMode = localStorage.getItem('llm_mode') as LLMProvider | null
-    if (storedMode && (storedMode === 'api' || storedMode === 'local')) {
+    if (storedMode && (storedMode === 'api' || storedMode === 'local' || storedMode === 'ollama')) {
       this.provider = storedMode
     }
 
     const storedKey = localStorage.getItem('openai_api_key')
     if (storedKey) {
       this.apiKey = storedKey
+    }
+
+    const storedOllamaModel = localStorage.getItem('ollama_model')
+    if (storedOllamaModel) {
+      this.ollamaModel = storedOllamaModel
     }
   }
 
@@ -43,6 +49,17 @@ class LLMService {
     if (typeof window !== 'undefined') {
       localStorage.setItem('openai_api_key', key)
     }
+  }
+
+  setOllamaModel(model: string) {
+    this.ollamaModel = model
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ollama_model', model)
+    }
+  }
+
+  getOllamaModel(): string | null {
+    return this.ollamaModel
   }
 
   async chat(messages: Message[], config?: LLMConfig): Promise<LLMResponse> {
@@ -148,6 +165,9 @@ class LLMService {
       const engine = getWebLLMEngine()
       return engine.getAvailableModels().map((m) => m.id)
     }
+    if (this.provider === 'ollama') {
+      return [] // Fetched dynamically via /api/ollama/models
+    }
     return ['gpt-4o-mini', 'gpt-4o', 'gpt-3.5-turbo']
   }
 
@@ -155,6 +175,9 @@ class LLMService {
     if (this.provider === 'local') {
       const engine = getWebLLMEngine()
       return engine.isModelLoaded()
+    }
+    if (this.provider === 'ollama') {
+      return this.ollamaModel !== null && this.ollamaModel.length > 0
     }
     return this.apiKey !== null && this.apiKey.length > 0
   }

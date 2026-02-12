@@ -6,6 +6,7 @@ import { LabLayout } from '@/components/LabLayout'
 import { LabHeader } from '@/components/LabHeader'
 import { TerminalSection } from '@/components/TerminalSection'
 import { getLLMService } from '@/lib/llm-service'
+import { buildLabHeaders } from '@/lib/lab-fetch-headers'
 import { ApiKeyConfig } from '@/components/ApiKeyConfig'
 import { LAB_COLORS } from '@/lib/lab-colors'
 
@@ -67,17 +68,13 @@ Example: "While I can discuss general compensation, I should note that our execu
                 )
 
                 // Send to API for validation (embeddings are simulated, not real)
-                const apiKey = localStorage.getItem('openai_api_key')
                 const response = await fetch('/api/vector-embedding-weakness/execute', {
                     method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'x-llm-mode': 'local'
-                    },
-                    body: JSON.stringify({ 
-                        query, 
-                        mode, 
-                        apiKey: apiKey || 'not-needed',
+                    headers: buildLabHeaders(provider),
+                    body: JSON.stringify({
+                        query,
+                        mode,
+                        apiKey: 'not-needed',
                         llmResponse: result.content
                     })
                 })
@@ -85,11 +82,10 @@ Example: "While I can discuss general compensation, I should note that our execu
                 setResults(data)
             } else {
                 // API mode or explore mode (explore doesn't use LLM)
-                const apiKey = localStorage.getItem('openai_api_key')
                 const response = await fetch('/api/vector-embedding-weakness/execute', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query, mode, apiKey: apiKey || 'not-needed' })
+                    headers: buildLabHeaders(provider),
+                    body: JSON.stringify({ query, mode, apiKey: 'not-needed' })
                 })
                 const data = await response.json()
                 setResults(data)

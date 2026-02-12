@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, handleLLMError } from '@/lib/create-llm-client'
 
 interface Email {
     id: string
@@ -129,9 +129,7 @@ export async function POST(req: Request) {
         const { mode, prompt, currentEmails, response: localResponse, actions: localActions } = await req.json()
 
         // Check if this is local mode (response already generated client-side)
-        const isLocalMode = req.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && localResponse) {
+        if (isLocalMode(req) && localResponse) {
             // Validate the response from local model
             // Use provided actions or simulate them
             let actions = localActions || []
@@ -175,16 +173,7 @@ export async function POST(req: Request) {
             })
         }
 
-        // API mode - existing OpenAI flow
-        const apiKey = req.headers.get('Authorization')?.split(' ')[1]
-
-        if (!apiKey) {
-            return NextResponse.json(
-                { error: 'OpenAI API key is required' },
-                { status: 401 }
-            )
-        }
-
+        // API / Ollama mode
         if (!currentEmails || !Array.isArray(currentEmails)) {
             return NextResponse.json(
                 { error: 'No emails provided' },
@@ -192,7 +181,16 @@ export async function POST(req: Request) {
             )
         }
 
-        const openai = new OpenAI({ apiKey })
+        let llmClient: ReturnType<typeof createLLMClient>
+        try {
+            llmClient = createLLMClient(req, { defaultModel: 'gpt-3.5-turbo' })
+        } catch {
+            return NextResponse.json(
+                { error: 'OpenAI API key is required' },
+                { status: 401 }
+            )
+        }
+        const { client: openai, model: llmModel } = llmClient
 
         // Get the appropriate system prompt based on mode
         const systemPrompt = SYSTEM_PROMPTS[mode as keyof typeof SYSTEM_PROMPTS]
@@ -210,7 +208,7 @@ export async function POST(req: Request) {
 
         // Process the request with the LLM
         const completion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model: llmModel,
             messages: [
                 { role: 'system', content: systemPrompt },
                 {
@@ -290,9 +288,7 @@ export async function POST(req: Request) {
         })
     } catch (error) {
         console.error('Error:', error)
-        return NextResponse.json(
-            { error: 'Failed to process request' },
-            { status: 500 }
-        )
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 

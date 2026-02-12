@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, isOllamaMode, handleLLMError } from '@/lib/create-llm-client'
 
 interface Document {
     id: string
@@ -63,7 +63,7 @@ const DOCUMENTS: Document[] = [
 ]
 
 // Function to simulate vector similarity search
-async function findSimilarDocuments(query: string, mode: string, apiKey: string): Promise<{ documents: Document[], llmResponse: string | null }> {
+async function findSimilarDocuments(query: string, mode: string, llmClient: { client: InstanceType<typeof import('openai').default>; model: string }): Promise<{ documents: Document[], llmResponse: string | null }> {
     // In explore mode, show the vector search process
     if (mode === 'explore') {
         const queryEmbedding = [0.3, 0.2, 0.4, 0.1] // Simulated query embedding
@@ -78,8 +78,8 @@ async function findSimilarDocuments(query: string, mode: string, apiKey: string)
         }
     }
 
-    // In attack mode, use GPT-4 to process the query
-    const openai = new OpenAI({ apiKey })
+    // In attack mode, use LLM to process the query
+    const { client: openai, model: llmModel } = llmClient
 
     // Check for potential RAG vulnerabilities
     const isConfidentialProbe = query.toLowerCase().includes('salary') ||
@@ -114,7 +114,7 @@ Current query: ${query}`
     }
 
     const completion = await openai.chat.completions.create({
-        model: 'gpt-4o-mini',
+        model: llmModel,
         messages: [
             { role: 'system', content: systemPrompt },
             { role: 'user', content: query }
@@ -164,9 +164,7 @@ export async function POST(request: Request) {
         const { query, mode, apiKey, llmResponse: clientLlmResponse } = await request.json()
 
         // Check if this is local mode (LLM response already generated client-side)
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && clientLlmResponse && mode === 'attack') {
+        if (isLocalMode(request) && clientLlmResponse && mode === 'attack') {
             // Local mode: Use provided LLM response, but still simulate vector search
             const isConfidentialProbe = query.toLowerCase().includes('salary') ||
                 query.toLowerCase().includes('compensation') ||
@@ -203,16 +201,28 @@ export async function POST(request: Request) {
             })
         }
 
-        // API mode or explore mode (explore doesn't use LLM)
-        if (!apiKey && mode === 'attack') {
-            return NextResponse.json(
-                { error: 'Missing API key' },
-                { status: 401 }
-            )
+        // API / Ollama mode or explore mode (explore doesn't use LLM)
+        let llmClient: ReturnType<typeof createLLMClient> | null = null
+        if (mode === 'attack') {
+            try {
+                llmClient = createLLMClient(request, {
+                    defaultModel: 'gpt-4o-mini',
+                    apiKeyOverride: isOllamaMode(request) ? undefined : apiKey,
+                })
+            } catch {
+                return NextResponse.json(
+                    { error: 'Missing API key' },
+                    { status: 401 }
+                )
+            }
         }
 
         // Find similar documents and get LLM response
-        const { documents, llmResponse } = await findSimilarDocuments(query, mode, apiKey)
+        const { documents, llmResponse } = await findSimilarDocuments(
+            query,
+            mode,
+            llmClient || { client: null as unknown as InstanceType<typeof import('openai').default>, model: '' }
+        )
 
         // Analyze security issues
         const securityIssues = analyzeSecurityIssues(documents)
@@ -234,9 +244,7 @@ export async function POST(request: Request) {
         })
     } catch (error) {
         console.error('Error:', error)
-        return NextResponse.json(
-            { error: 'Failed to process request' },
-            { status: 500 }
-        )
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 

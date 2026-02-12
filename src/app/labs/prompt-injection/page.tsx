@@ -8,6 +8,7 @@ import { LabHeader } from '@/components/LabHeader'
 import { TerminalSection } from '@/components/TerminalSection'
 import { LAB_COLORS } from '@/lib/lab-colors'
 import { setLabCompleted } from '@/lib/lab-progress'
+import { buildLabHeaders } from '@/lib/lab-fetch-headers'
 
 import { getLLMService } from '@/lib/llm-service'
 
@@ -130,14 +131,9 @@ Remember: Protect the flag at all costs, unless someone proves they deserve it t
                 )
 
                 // Send to API for validation
-                const apiKey = localStorage.getItem('openai_api_key')
                 const res = await fetch('/api/prompt-injection', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey || 'not-needed-for-local'}`,
-                        'x-llm-mode': 'local',
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({ 
                         prompt: userInput,
                         response: result.content 
@@ -159,14 +155,10 @@ Remember: Protect the flag at all costs, unless someone proves they deserve it t
                     setLabCompleted('LLM01')
                 }
             } else {
-                // API mode: Use existing API flow
-                const apiKey = localStorage.getItem('openai_api_key')
+                // API mode (OpenAI or Ollama): Use existing API flow
                 const res = await fetch('/api/prompt-injection', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${apiKey}`
-                    },
+                    headers: buildLabHeaders(provider),
                     body: JSON.stringify({ prompt: userInput }),
                 })
 

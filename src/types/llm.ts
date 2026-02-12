@@ -1,6 +1,12 @@
 // Shared types for LLM abstraction layer
 
-export type LLMProvider = 'api' | 'local'
+export type LLMProvider = 'api' | 'local' | 'ollama'
+
+export interface OllamaModelInfo {
+  name: string
+  size: number
+  modified_at: string
+}
 
 export interface Message {
   role: 'system' | 'user' | 'assistant'

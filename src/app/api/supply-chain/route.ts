@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, handleLLMError } from '@/lib/create-llm-client'
 
 // Scenario behaviors and success conditions
 const scenarios = {
@@ -72,9 +72,7 @@ export async function POST(request: Request) {
         const { prompt, step, response: localResponse } = await request.json()
 
         // Check if this is local mode (response already generated client-side)
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && localResponse) {
+        if (isLocalMode(request) && localResponse) {
             // Validate the response from local model
             const scenario = scenarios[step as keyof typeof scenarios]
             if (!scenario) {
@@ -92,17 +90,17 @@ export async function POST(request: Request) {
             })
         }
 
-        // API mode - existing OpenAI flow
-        const authHeader = request.headers.get('authorization')
-        if (!authHeader?.startsWith('Bearer ')) {
+        // API / Ollama mode
+        let llmClient: ReturnType<typeof createLLMClient>
+        try {
+            llmClient = createLLMClient(request, { defaultModel: 'gpt-3.5-turbo' })
+        } catch {
             return NextResponse.json(
                 { error: 'Missing or invalid API key' },
                 { status: 401 }
             )
         }
-
-        const apiKey = authHeader.split(' ')[1]
-        const openai = new OpenAI({ apiKey })
+        const { client: openai, model: llmModel } = llmClient
 
         // Get scenario behavior
         const scenario = scenarios[step as keyof typeof scenarios]
@@ -118,7 +116,7 @@ export async function POST(request: Request) {
                 { role: "system", content: scenario.systemPrompt },
                 { role: "user", content: prompt }
             ],
-            model: "gpt-3.5-turbo",
+            model: llmModel,
             temperature: 0.7,
             max_tokens: 500
         }) as ChatResponse;
@@ -141,11 +139,8 @@ export async function POST(request: Request) {
             success: foundVulnerability ? successMessages[step as keyof typeof successMessages] : null
         })
     } catch (error: unknown) {
-        const err = error as OpenAIError
-        console.error('Error:', err.response?.data || err.message)
-        return NextResponse.json(
-            { error: err.response?.data?.error?.message || 'Failed to process prompt' },
-            { status: err.response?.status || 500 }
-        )
+        console.error('Error:', error)
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 

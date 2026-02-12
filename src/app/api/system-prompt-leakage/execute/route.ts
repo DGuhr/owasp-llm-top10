@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import OpenAI from 'openai'
+import { createLLMClient, isLocalMode, handleLLMError } from '@/lib/create-llm-client'
 
 interface SecurityControl {
     id: string
@@ -285,9 +285,7 @@ export async function POST(request: Request) {
         const { prompt, mode, response: localResponse } = await request.json()
 
         // Check if this is local mode (response already generated client-side)
-        const isLocalMode = request.headers.get('x-llm-mode') === 'local'
-        
-        if (isLocalMode && localResponse) {
+        if (isLocalMode(request) && localResponse) {
             // Validate the response from local model
             const leaks = detectLeaks(localResponse)
             const foundSensitiveInfo = leaks.systemInfo.length > 0 || leaks.controls.length > 0
@@ -307,17 +305,17 @@ export async function POST(request: Request) {
             })
         }
 
-        // API mode - existing OpenAI flow
-        const authHeader = request.headers.get('authorization')
-        if (!authHeader?.startsWith('Bearer ')) {
+        // API / Ollama mode
+        let llmClient: ReturnType<typeof createLLMClient>
+        try {
+            llmClient = createLLMClient(request, { defaultModel: 'gpt-3.5-turbo' })
+        } catch {
             return NextResponse.json(
                 { error: 'Missing or invalid API key' },
                 { status: 401 }
             )
         }
-
-        const apiKey = authHeader.split(' ')[1]
-        const openai = new OpenAI({ apiKey })
+        const { client: openai, model: llmModel } = llmClient
 
         // Get the appropriate system prompt based on mode
         const systemPrompt = SYSTEM_PROMPTS[mode as keyof typeof SYSTEM_PROMPTS]
@@ -329,7 +327,7 @@ export async function POST(request: Request) {
         }
 
         const completion = await openai.chat.completions.create({
-            model: 'gpt-3.5-turbo',
+            model: llmModel,
             messages: [
                 { role: 'system', content: systemPrompt },
                 { role: 'user', content: prompt }
@@ -359,9 +357,7 @@ export async function POST(request: Request) {
         })
     } catch (error) {
         console.error('Error:', error)
-        return NextResponse.json(
-            { error: 'Failed to process request' },
-            { status: 500 }
-        )
+        const { message, status } = handleLLMError(error)
+        return NextResponse.json({ error: message }, { status })
     }
 } 
